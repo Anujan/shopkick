@@ -1,1 +1,1 @@
-GoalSetter::Application.config.secret_token = ENV['SECRET_KEY_BASE'] || '59caa55696dea0767725ec683fca38cfb13c63287f5da20a0a7589db42200a315b053fef72c4add50e9e089b2753107b81c2c07e870844b4ce1ecc9702f3f5e9'
+Shopkick::Application.config.secret_token = ENV['SECRET_KEY_BASE'] || '59caa55696dea0767725ec683fca38cfb13c63287f5da20a0a7589db42200a315b053fef72c4add50e9e089b2753107b81c2c07e870844b4ce1ecc9702f3f5e9'
