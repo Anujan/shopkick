@@ -10,17 +10,25 @@ class Store < ActiveRecord::Base
 
   has_many :sessions
 
-  def password=(pwd)
-    @password = pwd
-    self.password_digest = BCrypt::Password.create(pwd)
-  end
-
-  def is_valid_password?(pwd)
-    BCrypt::Password.new(self.password_digest).is_password?(pwd)
-  end
+  after_create :setup_tenant!
 
   def self.find_by_credentials(email, password)
     store = Store.find_by_email(email)
     store if store && store.is_valid_password?(password)
   end
+
+  def password=(pwd)
+    @password = pwd
+    self.password_digest = BCrypt::Password.create(pwd)
+  end
+
+  private
+    def is_valid_password?(pwd)
+      BCrypt::Password.new(self.password_digest).is_password?(pwd)
+    end
+
+    def setup_tenant!
+      Apartment::Database.create(self.name)
+      Apartment::Database.switch(self.name)
+    end
 end

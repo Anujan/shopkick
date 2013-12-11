@@ -10,4 +10,8 @@ Shopkick::Application.routes.draw do
   resources :sessions, only: [:new, :create]
 
   root to: 'root#root'
+
+  constraints(lambda { |r| r.subdomain.present? && r.subdomain != 'www' }) do
+
+  end
 end

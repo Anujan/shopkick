@@ -14,6 +14,8 @@
 ActiveRecord::Schema.define(:version => 20131211191452) do
 
   create_table "profiles", :force => true do |t|
+    t.string   "store_name"
+    t.string   "email"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "address"
@@ -27,7 +29,6 @@ ActiveRecord::Schema.define(:version => 20131211191452) do
   create_table "sessions", :force => true do |t|
     t.integer  "store_id"
     t.string   "token"
-    t.string   "location"
     t.string   "ip_address"
     t.string   "user_agent"
     t.datetime "created_at", :null => false

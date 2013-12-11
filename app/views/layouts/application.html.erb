@@ -7,8 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= current_store.name if current_store %>
   <%= render partial: 'shared/flash_messages' %>
-<%= yield %>
-
+  <%= yield %>
 </body>
 </html>

@@ -1,19 +1,19 @@
 module SessionsHelper
-  def current_store
+  def current_user
     return nil if cookies.signed[:token].nil?
     sess = Session.find_by_token(cookies.signed[:token])
-    if !!@current_store && sess
-      @current_store ||= sess.store
+    if !!@current_user && sess
+      @current_user ||= sess.store
     end
-    @current_store
+    @current_user
   end
 
   def signed_in?
-    !!current_store
+    !!current_user
   end
 
   def log_in!(store, remember_me=false)
-    unless cookies.signed[:token].nil?
+    if signed_in?
       logout!
     end
 
