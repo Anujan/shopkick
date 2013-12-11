@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  store_id: 1
+  token: MyString
+  location: MyString
+  ip_address: MyString
+  user_agent: MyString
+
+two:
+  store_id: 1
+  token: MyString
+  location: MyString
+  ip_address: MyString
+  user_agent: MyString

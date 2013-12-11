@@ -1,0 +1,12 @@
+<form id="sign_up_form" action="<%= sign_up_url %>" method="POST">
+  <label for="name">Name</label>
+  <input type="text" name="store[name]" value="<%= @store.name %>" id="store">
+  <br>
+  <label for="email">Email</label>
+  <input type="text" name="store[email]" value="<%= @store.email %>" id="email">
+  <br>
+  <label for="password">Password</label>
+  <input type="password" name="store[password]" value="" id="password">
+  <br>
+  <input type="submit" value="Create store!">
+</form>
