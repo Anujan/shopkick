@@ -1,4 +1,16 @@
 Shopkick::Application.routes.draw do
+  constraints(lambda { |r| r.subdomain.present? && r.subdomain != 'www' }) do
+    namespace :admin do
+      root to: 'Dashboard#index'
+      resources :orders
+      resources :customers
+      resources :products
+    end
+    scope module: 'store' do
+      root to: 'Main#index'
+    end
+  end
+
   get '/sign_up', to: 'Stores#new'
   post '/sign_up', to: 'Stores#create'
   resources :stores, only: [:new, :create]
@@ -7,15 +19,5 @@ Shopkick::Application.routes.draw do
   post '/sign_in', to: "Sessions#create"
   resources :sessions, only: [:new, :create, :destroy]
 
-  #root to: 'root#root'
   root to: 'Sessions#new'
-
-  constraints(lambda { |r| r.subdomain.present? && r.subdomain != 'www' }) do
-    namespace :admin do
-      get '/', to: 'Dashboard#index'
-      resources :orders
-      resources :customers
-      resources :products
-    end
-  end
 end

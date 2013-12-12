@@ -17,6 +17,8 @@ end
 
 gem 'apartment'
 
+gem 'liquid'
+
 gem 'jquery-rails'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
