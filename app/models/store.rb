@@ -7,6 +7,7 @@ class Store < ActiveRecord::Base
   validates :name, :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :name, :email, :password_digest, presence: true
+  validates :name, exclusion: { in: %w(www public admin) }
 
   has_many :sessions
 
