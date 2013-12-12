@@ -23,11 +23,11 @@ class Store < ActiveRecord::Base
     self.password_digest = BCrypt::Password.create(pwd)
   end
 
-  private
-    def is_valid_password?(pwd)
-      BCrypt::Password.new(self.password_digest).is_password?(pwd)
-    end
+  def is_valid_password?(pwd)
+    BCrypt::Password.new(self.password_digest).is_password?(pwd)
+  end
 
+  protected
     def setup_tenant!
       Apartment::Database.create(self.name)
       Apartment::Database.switch(self.name)

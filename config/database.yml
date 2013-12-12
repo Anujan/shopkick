@@ -5,5 +5,5 @@ production:
 development:
   adapter: postgresql
   database: shopkick_development
-  username: anujan
-  password: anujan
+  username: appacademy
+  password:

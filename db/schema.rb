@@ -11,7 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131211191452) do
+ActiveRecord::Schema.define(:version => 20131212142254) do
+
+  create_table "customers", :force => true do |t|
+    t.string   "first_name",          :null => false
+    t.string   "last_name",           :null => false
+    t.string   "email_address",       :null => false
+    t.string   "address_street",      :null => false
+    t.string   "address_city",        :null => false
+    t.string   "address_postal_code", :null => false
+    t.string   "address_country",     :null => false
+    t.string   "phone_number",        :null => false
+    t.text     "notes"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "orders", :force => true do |t|
+    t.integer  "customer_id",                                     :null => false
+    t.integer  "price",                                           :null => false
+    t.string   "payment_status",     :default => "Unpaid",        :null => false
+    t.string   "fulfillment_status", :default => "Not Fulfilled", :null => false
+    t.datetime "created_at",                                      :null => false
+    t.datetime "updated_at",                                      :null => false
+  end
+
+  add_index "orders", ["customer_id"], :name => "index_orders_on_customer_id"
 
   create_table "profiles", :force => true do |t|
     t.string   "store_name"
