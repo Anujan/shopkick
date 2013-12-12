@@ -1,6 +1,6 @@
 <article class="product left">
   <figure class="product_image">
-
+    <%= image_tag(product.images.first.photo.url(:thumb) ) %>
   </figure>
   <h4><%= product.title %></h4>
   <span class="price"><%= number_to_currency product.price %></span>

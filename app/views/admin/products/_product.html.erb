@@ -1,4 +1,9 @@
 <h3><%= product.title %></h3>
+<% unless product.images.empty? %>
+  <div class="product_image">
+    <%= image_tag(product.images.first.photo.url(:medium)) %>
+  </div>
+<% end %>
 <div class="info">
   <strong>Category: </strong><%= product.category %>
 </div>

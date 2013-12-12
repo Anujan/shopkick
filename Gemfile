@@ -15,6 +15,10 @@ group :development do
   gem 'binding_of_caller'
 end
 
+gem "paperclip"
+gem "aws-sdk"
+gem "figaro"
+
 gem 'apartment'
 
 gem 'liquid'

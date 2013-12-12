@@ -1,4 +1,4 @@
-<form method="POST" action="<%= @product.persisted? ? admin_product_url(@product) : admin_products_url %>">
+<form method="POST" action="<%= @product.persisted? ? admin_product_url(@product) : admin_products_url %>" enctype="multipart/form-data">
   <div class="form-group">
     <label for="title">Title</label>
     <input type="text" name="product[title]" value="<%= @product.title %>" id="title">
@@ -30,6 +30,11 @@
   <div class="form-group">
     <label for="visible">Visible?</label>
     <input type="checkbox" name="product[visible]" value="<%= @product.visible %>" id="visible" checked>
+  </div>
+
+  <div class="form-group">
+    <label for="image_upload">Image</label>
+    <input type="file" name="product[images_attributes][][photo]" id="image_upload">
   </div>
 
   <%= '<input type="hidden" name="_method" value="delete">'.html_safe if @product.persisted? %>
