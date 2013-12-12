@@ -1,5 +1,8 @@
+<h1 id="logo"><%= current_store.name %></h1>
 <nav class="store_top_nav">
-  <h2><%= current_store.name %></h2>
   <ul class="right">
+    <li><%= link_to 'Home', root_url %></li>
+    <li><%= link_to 'Products', products_url %></li>
+    <li><%= link_to 'Cart', '#' %></li>
   </ul>
 </nav>

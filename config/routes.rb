@@ -8,6 +8,7 @@ Shopkick::Application.routes.draw do
     end
     scope module: 'store' do
       root to: 'Main#index'
+      resources :products
     end
   end
 
