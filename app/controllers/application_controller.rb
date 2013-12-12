@@ -6,4 +6,5 @@ class ApplicationController < ActionController::Base
   include UrlHelper
   include SessionsHelper
   include StoresHelper
+  include ApplicationHelper
 end

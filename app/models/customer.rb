@@ -6,4 +6,8 @@ class Customer < ActiveRecord::Base
     :email_address, :first_name, :last_name, :phone_number, presence: true
 
   has_many :orders, inverse_of: :customer
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

@@ -7,13 +7,13 @@ Shopkick::Application.routes.draw do
 
   get '/sign_in', to: "Sessions#new"
   post '/sign_in', to: "Sessions#create"
-  resources :sessions, only: [:new, :create, :delete]
+  resources :sessions, only: [:new, :create, :destroy]
 
   root to: 'root#root'
 
   constraints(lambda { |r| r.subdomain.present? && r.subdomain != 'www' }) do
     namespace :admin do
-      get '/', to: 'Admin#dashboard'
+      get '/', to: 'Dashboard#index'
       resources :orders
       resources :customers
     end
