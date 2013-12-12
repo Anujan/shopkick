@@ -7,6 +7,7 @@
   <label for="remember_me">Remember me</label>
   <input type="checkbox" name="remember_me" id="remember_me">
   <br>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="submit" value="Login!">
 </form>
 <%= link_to "Don't have an account?", sign_up_path %>

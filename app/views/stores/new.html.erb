@@ -8,6 +8,7 @@
   <label for="password">Password</label>
   <input type="password" name="store[password]" value="" id="password">
   <br>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="submit" value="Create store!">
 </form>
 <%= link_to "Already have an account?", sign_in_path %>

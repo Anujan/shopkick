@@ -19,6 +19,8 @@
     <textarea name="customer[notes]" rows="8" cols="40"></textarea>
   </div>
 
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
   <div class="form-group button-group">
     <a href="<%= admin_customers_url %>" class="btn cancel_btn">Cancel</a>
     <input type="submit" value="Save">

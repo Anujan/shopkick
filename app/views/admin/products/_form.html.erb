@@ -39,6 +39,7 @@
 
   <%= '<input type="hidden" name="_method" value="delete">'.html_safe if @product.persisted? %>
 
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <div class="form-group button-group">
     <a href="<%= admin_products_url %>" class="btn cancel_btn">Cancel</a>
     <input type="submit" value="Save">
