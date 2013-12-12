@@ -1,5 +1,5 @@
 class Admin::ProductsController < Admin::BaseController
-  before_filter :current_product, only: [:edit, :update, :destroy]
+  before_filter :current_product, only: [:edit, :update, :destroy, :show]
 
   def index
     @products = Product.order('created_at DESC')
@@ -12,7 +12,7 @@ class Admin::ProductsController < Admin::BaseController
   def create
     @product = Product.new(params[:product])
     if @product.save
-      flash[:notice] = "Product ##{@product.title} has been created!"
+      flash[:notice] = "Product `#{@product.title}` has been created!"
       redirect_to admin_products_url
     else
       flash.now[:errors] = @product.errors.full_messages
@@ -23,9 +23,12 @@ class Admin::ProductsController < Admin::BaseController
   def edit
   end
 
+  def show
+  end
+
   def update
     if @product.update_attributes(params[:product])
-      flash[:notice] = "Product ##{@product.title} has been updated!".
+      flash[:notice] = "Product `#{@product.title}` has been updated!".
       redirect_to admin_products_url
     else
       flash.now[:errors] = @product.errors.full_messsages
@@ -35,12 +38,12 @@ class Admin::ProductsController < Admin::BaseController
 
   def destroy
     if @product.destroy
-      flash[:notice] = "Product `##{@product.title}` has been deleted!".
+      flash[:notice] = "Product `#{@product.title}` has been deleted!".
       redirect_to admin_products_url
     end
   end
 
-  def current_order
+  def current_product
     @product = Product.find(params[:id])
   end
 end

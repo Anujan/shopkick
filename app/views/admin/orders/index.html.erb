@@ -1,6 +1,7 @@
 <h1>Orders</h1>
 <table border="0" cellspacing="5" cellpadding="5">
   <tr>
+    <th>Order ID</th>
     <th>Customer Name</th>
     <th>Payment Status</th>
     <th>Fullfilment Status</th>
@@ -9,6 +10,7 @@
   </tr>
   <% @orders.each do |order| %>
     <tr>
+      <td><%= link_to order.id, admin_order_url(order) %>
       <td><%= order.customer.full_name %></td>
       <td><%= order.payment_status %></td>
       <td><%= order.fulfillment_status %></td>

@@ -13,7 +13,7 @@
   </tr>
   <% @customers.each do |customer| %>
     <tr>
-      <td><%= customer.full_name %></td>
+      <td><%= link_to customer.full_name, admin_customer_url(customer) %></td>
       <td><%= customer.email_address %></td>
       <td><%= customer.address_street %></td>
       <td><%= customer.address_city %></td>

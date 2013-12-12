@@ -1,5 +1,5 @@
 class Admin::OrdersController < Admin::BaseController
-  before_filter :current_order, only: [:edit, :update, :destroy]
+  before_filter :current_order, only: [:edit, :update, :destroy, :show]
 
   def index
     @orders = Order.order('created_at DESC')
@@ -21,6 +21,9 @@ class Admin::OrdersController < Admin::BaseController
   end
 
   def edit
+  end
+
+  def show
   end
 
   def update
