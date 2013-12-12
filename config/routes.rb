@@ -16,6 +16,7 @@ Shopkick::Application.routes.draw do
       get '/', to: 'Dashboard#index'
       resources :orders
       resources :customers
+      resources :products
     end
   end
 end

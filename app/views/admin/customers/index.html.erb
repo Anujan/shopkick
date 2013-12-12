@@ -1,0 +1,28 @@
+<h1>Customers</h1>
+<table border="0" cellspacing="5" cellpadding="5">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Street</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Postal/Zip Code</th>
+    <th>Country</th>
+    <th>Phone Number</th>
+    <th>Notes</th>
+  </tr>
+  <% @customers.each do |customer| %>
+    <tr>
+      <td><%= customer.full_name %></td>
+      <td><%= customer.email_address %></td>
+      <td><%= customer.address_street %></td>
+      <td><%= customer.address_city %></td>
+      <td><%= customer.address_state %></td>
+      <td><%= customer.address_postal_code %></td>
+      <td><%= customer.address_country %></td>
+      <td><%= customer.phone_number %></td>
+      <td><%= customer.notes %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to "New Order", new_admin_product_url %>

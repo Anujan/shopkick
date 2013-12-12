@@ -1,9 +1,10 @@
 class Customer < ActiveRecord::Base
   attr_accessible :address_city, :address_country, :address_postal_code,
-    :address_street, :email_address, :first_name, :last_name, :notes, :phone_number
+    :address_street, :address_state, :email_address, :first_name, :last_name,
+    :notes, :phone_number
 
-  validates :address_city, :address_country, :address_postal_code, :address_street,
-    :email_address, :first_name, :last_name, :phone_number, presence: true
+  validates :address_city, :address_country, :address_postal_code, :address_state,
+    :address_street, :email_address, :first_name, :last_name, :phone_number, presence: true
 
   has_many :orders, inverse_of: :customer
 

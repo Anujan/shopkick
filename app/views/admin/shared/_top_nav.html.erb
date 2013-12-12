@@ -1,0 +1,11 @@
+<nav class="admin_top_nav">
+  <h2>Shopkick</h2>
+  <ul class="left group">
+    <li class="has-dropdown">
+      <%= (Profile.first ? Profile.first.full_name : current_admin.name).capitalize %>
+      <ul class="nav-dropdown">
+        <li><%= link_to "Log out", session_url(current_store), method: :delete %></li>
+      </ul>
+    </li>
+  </ul>
+</nav>

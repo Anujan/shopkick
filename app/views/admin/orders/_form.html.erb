@@ -1,0 +1,48 @@
+<form method="POST" action="<%= @order.persisted? ? admin_order_url(@order) : admin_orders_url %>">
+    <%= '<input type="hidden" name="_method" value="delete">'.html_safe if @order.persisted? %>
+  <div class="form-group">
+    <label for="customer">Customer</label>
+    <select name="order[customer_id]" id="customer">
+      <% Customer.all.each do |customer|  %>
+        <option value="<%= customer.id %>"><%= customer.full_name %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="fulfillment_status">Fulfillment Status</label>
+    <select name="order[fulfillment_status]" id="fulfillment_status">
+      <% Order::FULFILLMENT_STATUSES.each do |status|  %>
+        <option value="<%= status %>" <%= "selected" if status == @order.fulfillment_status %>><%= status %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="payment_status">Payment Status</label>
+    <select name="order[payment_status]" id="payment_status">
+      <% Order::PAYMENT_STATUSES.each do |status|  %>
+        <option value="<%= status %>"<%= "selected" if status == @order.payment_status %>><%= status %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="products">Products</label>
+    <select name="order[product_ids][]" id="order[product_ids]" multiple>
+      <% Product.all.each do |product| %>
+          <option value="<%= product.id %>" <%= "selected" if @order.product_ids.include?(product.id) %>><%= product.title %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="price">Total Price</label >
+    <input type="number" name="order[price]" min="0.01" step="0.01" value="<%= @order.price %>">
+  </div>
+
+  <div class="form-group button-group">
+    <a href="<%= admin_orders_url %>" class="btn cancel_btn">Cancel</a>
+    <input type="submit" value="Save">
+  </div>
+</form>

@@ -7,4 +7,5 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include StoresHelper
   include ApplicationHelper
+  include ActionView::Helpers::NumberHelper
 end
