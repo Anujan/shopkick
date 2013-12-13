@@ -1,5 +1,5 @@
-<section class="group">
+<section class="group products">
   <% @products.each do |product| %>
-    <%= render "small_product", product: product %>
+    <%= link_to (render "small_product", product: product).html_safe, product %>
   <% end %>
 </section>

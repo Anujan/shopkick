@@ -8,4 +8,7 @@ class Product < ActiveRecord::Base
 
   has_many :images, inverse_of: :product, dependent: :destroy
   accepts_nested_attributes_for :images
+
+  extend FriendlyId
+  friendly_id :title, :use => :slugged
 end
