@@ -1,0 +1,61 @@
+<div id="cart">
+  <% if @cart.products.count > 0 %>
+  <h1>Your cart</h1>
+  <form action="/cart" method="post" id="cartform">
+    <table>
+      <thead>
+        <tr>
+          <th class="image">&nbsp;</th>
+          <th class="item">&nbsp;</th>
+          <th class="quantity">Quantity</th>
+          <th class="price">Price</th>
+          <th class="remove">&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart.products.each do |product| %>
+          <tr>
+            <td class="image">
+              <div class="product_image">
+                <%= link_to image_tag(product.images.first.photo.url(:thumb)).html_safe, product_url(product) %>
+              </div>
+            </td>
+            <td class="item">
+              <%= link_to "<strong>#{product.title}<strong>".html_safe, product_url(product) %>
+            </td>
+            <td class="qty">
+              <input type="text" size="4" value="1">
+            </td>
+            <td class="price"><%= number_to_currency(product.price) %></td>
+            <td class="remove">
+              <%= link_to "Remove", cart_product_url(product), method: :delete %>          </td>
+          </tr>
+        <% end %>
+          <tr class="summary">
+            <td class="image">&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td class="price">
+              <span class="total">
+                <strong><%= number_to_currency(@cart.total_price) %></strong>
+              </span>
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+      </tbody>
+    </table>
+
+    <div class="checkout-buttons group">
+      <label for="note">Add special instructions for your order...</label>
+      <textarea id="note" name="note" rows="10" cols="50"></textarea>
+    </div>
+
+    <div class="button-group group">
+      <input type="submit" id="checkout" class="btn" name="checkout" value="Check out">
+      <input type="submit" id="update-cart" class="btn" name="update" value="Update">
+    </div>
+  </form>
+  <% else %>
+    <h2>Your cart is empty!</h2>
+  <% end %>
+</div>
