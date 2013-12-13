@@ -142,7 +142,7 @@ input:focus, textarea:focus {
 	color: white;
 }
 
-.cancel_btn {
-  background: #e74c3c;
+.button-group .cancel_btn {
+  background-color: #e74c3c;
   color: #FFF;
 }
