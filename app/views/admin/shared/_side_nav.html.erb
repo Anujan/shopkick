@@ -1,9 +1,11 @@
-<nav class="admin_side_nav">
-	<h2>Your store</h2>
-	<ul>
-		<li><%= link_to 'Dashboard', admin_root_url %></li>
-		<li><%= link_to 'Orders', admin_orders_url %></li>
-		<li><%= link_to 'Customers', admin_customers_url %></li>
-		<li><%= link_to 'Products', admin_products_url %></li>
-	</ul> 
-</nav>
+<aside>
+	<nav class="admin">
+		<h2>Your store</h2>
+		<ul>
+			<%= link_to '<li>Dashboard</li>'.html_safe, admin_root_url %>
+			<%= link_to '<li>Orders</li>'.html_safe, admin_orders_url %>
+			<%= link_to '<li>Customers</li>'.html_safe, admin_customers_url %>
+			<%= link_to '<li>Products</li>'.html_safe, admin_products_url %>
+		</ul> 
+	</nav>
+</aside>

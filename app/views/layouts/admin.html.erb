@@ -1,4 +1,8 @@
 <%= render partial: 'admin/shared/top_nav' %>
-<%= render partial: 'admin/shared/side_nav' %>
-<%= yield %>
+<div class="container group">
+	<%= render partial: 'admin/shared/side_nav' %>
+	<section class="admin-content">
+		<%= yield %>
+	</section>
+</div>
 <%= parent_layout 'application' %>
