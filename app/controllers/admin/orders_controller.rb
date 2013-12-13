@@ -28,7 +28,7 @@ class Admin::OrdersController < Admin::BaseController
 
   def update
     if @order.update_attributes(params[:order])
-      flash[:notice] = "Order ##{@order.id} has been updated!".
+      flash[:notice] = "Order ##{@order.id} has been updated!"
       redirect_to admin_orders_url
     else
       flash.now[:errors] = @order.errors.full_messsages

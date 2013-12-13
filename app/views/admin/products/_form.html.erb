@@ -37,7 +37,7 @@
     <input type="file" name="product[images_attributes][][photo]" id="image_upload">
   </div>
 
-  <%= '<input type="hidden" name="_method" value="delete">'.html_safe if @product.persisted? %>
+  <%= '<input type="hidden" name="_method" value="PUT">'.html_safe if @product.persisted? %>
 
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <div class="form-group button-group">

@@ -28,7 +28,7 @@ class Admin::ProductsController < Admin::BaseController
 
   def update
     if @product.update_attributes(params[:product])
-      flash[:notice] = "Product `#{@product.title}` has been updated!".
+      flash[:notice] = "Product `#{@product.title}` has been updated!"
       redirect_to admin_products_url
     else
       flash.now[:errors] = @product.errors.full_messsages
@@ -38,7 +38,7 @@ class Admin::ProductsController < Admin::BaseController
 
   def destroy
     if @product.destroy
-      flash[:notice] = "Product `#{@product.title}` has been deleted!".
+      flash[:notice] = "Product `#{@product.title}` has been deleted!"
       redirect_to admin_products_url
     end
   end

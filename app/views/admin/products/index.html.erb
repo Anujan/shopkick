@@ -11,7 +11,7 @@
       <td><%= link_to product.title, admin_product_url(product) %></td>
       <td><%= product.category %></td>
       <td><%= number_to_currency(product.price) %></td>
-      <td><%= link_to "Delete", admin_product_url(product), method: :delete %></td>
+      <td><%= link_to "Edit", edit_admin_product_url(product) %></td>
     </tr>
   <% end %>
 </table>

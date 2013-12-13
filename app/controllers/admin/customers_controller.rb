@@ -28,7 +28,7 @@ class Admin::CustomersController < Admin::BaseController
 
   def update
     if @customer.update_attributes(params[:customer])
-      flash[:notice] = "Customer `#{@customer.full_name}` has been updated!".
+      flash[:notice] = "Customer `#{@customer.full_name}` has been updated!"
       redirect_to admin_customers_url
     else
       flash.now[:errors] = @customer.errors.full_messsages
@@ -38,7 +38,7 @@ class Admin::CustomersController < Admin::BaseController
 
   def destroy
     if @customer.destroy
-      flash[:notice] = "Customer `#{@customer.full_name}` has been deleted!".
+      flash[:notice] = "Customer `#{@customer.full_name}` has been deleted!"
       redirect_to admin_customers_url
     end
   end

@@ -1,5 +1,5 @@
 <form method="POST" action="<%= @order.persisted? ? admin_order_url(@order) : admin_orders_url %>">
-    <%= '<input type="hidden" name="_method" value="delete">'.html_safe if @order.persisted? %>
+    <%= '<input type="hidden" name="_method" value="PUT">'.html_safe if @order.persisted? %>
   <div class="form-group">
     <label for="customer">Customer</label>
     <select name="order[customer_id]" id="customer">

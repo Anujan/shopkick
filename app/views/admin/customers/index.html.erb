@@ -10,6 +10,7 @@
     <th>Country</th>
     <th>Phone Number</th>
     <th>Notes</th>
+    <th>Edit</th>
   </tr>
   <% @customers.each do |customer| %>
     <tr>
@@ -22,7 +23,8 @@
       <td><%= customer.address_country %></td>
       <td><%= customer.phone_number %></td>
       <td><%= customer.notes %></td>
+      <td><%= link_to 'Edit', edit_admin_customer_url(customer) %></td>
     </tr>
   <% end %>
 </table>
-<%= link_to "New Order", new_admin_product_url %>
+<%= link_to "New Customer", new_admin_customer_url %>
