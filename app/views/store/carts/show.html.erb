@@ -13,7 +13,8 @@
         </tr>
       </thead>
       <tbody>
-        <% @cart.products.each do |product| %>
+        <% @cart.cart_products.includes(:product).each do |cart_product| %>
+          <% product = cart_product.product %>
           <tr>
             <td class="image">
               <div class="product_image">
@@ -24,7 +25,7 @@
               <%= link_to "<strong>#{product.title}<strong>".html_safe, product_url(product) %>
             </td>
             <td class="qty">
-              <input type="text" size="4" value="1">
+              <input type="text" size="4" value="<%= cart_product.quantity %>">
             </td>
             <td class="price"><%= number_to_currency(product.price) %></td>
             <td class="remove">

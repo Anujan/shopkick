@@ -1,5 +1,5 @@
 class CartProduct < ActiveRecord::Base
-  attr_accessible :cart, :product
+  attr_accessible :cart, :product, :quantity
 
   belongs_to :cart, inverse_of: :cart_products
   belongs_to :product, inverse_of: :cart_products
