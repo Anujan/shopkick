@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     @store = Store.find_by_credentials(*credentials)
     if @store
       log_in!(@store, remember_me)
-      redirect_to admin_root_url
+      redirect_to admin_root_url(subdomain: @store.name)
     else
       flash.now[:error] = 'Invalid Credentials'
       render :new

@@ -8,7 +8,7 @@ class StoresController < ApplicationController
     if @store.save
       flash.now[:success] = "Your store has been created!"
       log_in!(@store)
-      redirect_to admin_root_url
+      redirect_to admin_root_url(subdomain: @store.name)
     else
       flash.now[:error] = @store.errors.full_messages
       render :new
