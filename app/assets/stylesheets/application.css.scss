@@ -132,6 +132,11 @@ input, textarea {
   }
 }
 
+label {
+  width: 100px;
+  display: inline-block;
+}
+
 .button-group input,
 .button-group a {
 	margin-top: 10px;
@@ -184,9 +189,11 @@ nav.store-top-nav > ul {
   > a {
     color: inherit;
   }
+  article {
+    padding-left: 4%;
+  }
   margin: auto;
   width: 100%;
-  padding-left: 10%;
 }
 
 .full-product {
@@ -223,4 +230,27 @@ nav.store-top-nav > ul {
   text-align: center;
   margin-top: 20px;
   font-style: italic;
+}
+
+tr.summary {
+  border-top: 1px solid #ccc;
+}
+
+div#cart {
+  margin: 40px auto;
+  width: 50%;
+}
+
+.alert {
+  width: 40%;
+  margin: auto;
+  border: 4px solid white;
+  &.notice {
+    background-color: #2ecc71;
+  }
+  &.error {
+    background-color: #e74c3c;
+  }
+  border-radius: 15px;
+  text-align: center;
 }

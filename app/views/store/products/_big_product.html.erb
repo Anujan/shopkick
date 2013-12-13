@@ -6,7 +6,7 @@
     <h2 class="product-title"><%= product.title %></h2>
     <h4 class="product-price"><%= number_to_currency product.price %></h4>
     <div class="button-group product-buy">
-      <a class="btn cancel_btn" href="#">Add to Cart</a>
+      <%= link_to 'Add to Cart', cart_product_url(product), method: :PUT, class: 'btn cancel_btn' %>
     </div>
     <p class="product-description">
       <%= product.description %>

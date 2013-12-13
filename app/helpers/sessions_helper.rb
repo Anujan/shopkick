@@ -34,7 +34,7 @@ module SessionsHelper
 
   def require_current_admin!
     unless signed_in?
-      redirect_to sign_in_url
+      redirect_to sign_in_url(subdomain: false)
     end
   end
 end

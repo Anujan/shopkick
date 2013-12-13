@@ -13,4 +13,18 @@ module StoresHelper
   		Apartment::Database.switch(current_store.name)
   	end
   end
+
+  def load_cart
+    cart_id = cookies.signed[:cart_id]
+    puts "Cart ID: #{cart_id}"
+    unless cart_id.nil?
+      @cart ||= Cart.find_by_id(cart_id)
+    end
+    unless @cart.nil?
+      @cart.update_attributes(last_accessed: Time.now)
+    else
+      @cart = Cart.create!(last_accessed: Time.now)
+      cookies.permanent.signed[:cart_id] = @cart.id
+    end
+  end
 end

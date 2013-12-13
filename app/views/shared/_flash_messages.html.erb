@@ -1,14 +1,15 @@
 <% flash.each do |key, value| %>
-<div class="alert <%= value %>">
-  <strong class="<%= key %>">
+<div class="alert <%= key %>">
+  <p><strong class="<%= key %>">
     <%= key.capitalize %>!
   </strong>
   <% if value.kind_of?(Enumerable) %>
     <% value.each do |val| %>
-      <p><%= val %><p>
+      <%= val %>
     <% end %>
   <% else %>
-    <p><%= value %></p>
+    <%= value %>
   <% end %>
+  </p>
 </div>
 <% end %>

@@ -1,5 +1,6 @@
 <%= render partial: 'store/shared/top_nav' %>
 <section class="store-content group">
+  <%= render partial: 'shared/flash_messages' %>
   <%= yield %>
 </section>
 <%= parent_layout 'application' %>
