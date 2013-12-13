@@ -8,6 +8,8 @@ class Store < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :name, :email, :password_digest, presence: true
   validates :name, exclusion: { in: %w(www public admin) }
+  validates :name, format: { with: /\A[a-zA-Z0-9]+\Z/ }
+
 
   has_many :sessions
 
