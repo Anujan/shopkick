@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20131213151941) do
     t.string   "address_country"
     t.string   "address_state"
     t.string   "address_postal_code"
+    t.string   "address_city"
   end
 
   create_table "sessions", :force => true do |t|

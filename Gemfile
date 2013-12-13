@@ -19,6 +19,8 @@ gem "paperclip"
 gem "aws-sdk"
 gem "figaro"
 
+gem 'turbolinks'
+
 gem 'friendly_id'
 
 gem 'apartment'

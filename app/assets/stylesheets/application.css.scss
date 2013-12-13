@@ -172,7 +172,9 @@ nav.store-top-nav > ul {
 }
 
 .product {
-  padding: 10px;
+  padding: 10px 10px;
+  width: 20%;
+  height: 250px;
   &:hover {
     opacity: 0.7;
   }
@@ -183,12 +185,13 @@ nav.store-top-nav > ul {
     color: inherit;
   }
   margin: auto;
-  width: 50%;
+  width: 100%;
+  padding-left: 10%;
 }
 
 .full-product {
   margin: auto;
-  width: 50%;
+  width: 80%;
   padding: 5%;
   .product-big-image, .product-details {
     width: 50%;
@@ -205,6 +208,7 @@ nav.store-top-nav > ul {
 .product-details {
   .product-price {
     opacity: 0.7;
+    font-size: 21px;
     font-style: italic;
   }
 }
@@ -213,9 +217,10 @@ nav.store-top-nav > ul {
   width: 80%;
   margin: auto;
   border-bottom: 2px solid #ccc;
-  > h2 {
-    text-align: center;
-    margin-top: 20px;
-    font-style: italic;
-  }
+}
+
+.front-page > section > h2 {
+  text-align: center;
+  margin-top: 20px;
+  font-style: italic;
 }

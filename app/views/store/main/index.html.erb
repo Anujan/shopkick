@@ -1,9 +1,12 @@
-<section class="featured-product">
-  <h2>Featured Product</h2>
-  <%= render "store/products/big_product", product: @featured_product %>
-</section>
-<section class="products latest-products">
-  <% @latest_products.each do |product| %>
-    <%= link_to (render "store/products/small_product", product: product).html_safe, product %>
-  <% end %>
+<section class='front-page'>
+  <section class="featured-product">
+    <h2>Featured Product</h2>
+    <%= render "store/products/big_product", product: @featured_product %>
+  </section>
+  <section class="products latest-products">
+    <h2>Latest Products</h2>
+    <% @latest_products.each do |product| %>
+      <%= link_to (render "store/products/small_product", product: product).html_safe, product %>
+    <% end %>
+  </section>
 </section>

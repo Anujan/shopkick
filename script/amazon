@@ -1,0 +1,16 @@
+require 'nokogiri'
+require 'open-uri'
+
+URL = 'http://www.amazon.com/s/ref=lp_283155_nr_p_n_publication_date_0?rh=n%3A283155%2Cp_n_publication_date%3A1250226011&bbn=283155&ie=UTF8&qid=1386952388&rnid=1250225011'
+page = Nokogiri::HTML(open(URL))
+books = []
+page.css(".product").each do |product|
+  p = product.css('.productTitle > a')
+  book = {}
+  book[:title] = p.inner_text.strip
+  img = product.css('.productImage > a > img')
+  book[:image] = img.attr('src').value
+  price = product.css('.newPrice > span').inner_text.gsub("$", "")
+  book[:price] = price
+  books << book
+end

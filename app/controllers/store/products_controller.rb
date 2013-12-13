@@ -2,7 +2,7 @@ class Store::ProductsController < Store::BaseController
   before_filter :current_product, only: [:show]
 
   def index
-    @products = Product.all
+    @products = Product.where(visible: true)
   end
 
   def show
