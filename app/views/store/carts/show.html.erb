@@ -1,5 +1,6 @@
 <div id="cart">
-  <% if @cart.products.count > 0 %>
+  <% cart_products = @cart.cart_products.includes(product: :images) %>
+  <% if cart_products.to_a.size %>
   <h1>Your cart</h1>
   <form action="/cart" method="post" id="cartform">
     <table>
@@ -13,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @cart.cart_products.includes(:product).each do |cart_product| %>
+        <% cart_products.each do |cart_product| %>
           <% product = cart_product.product %>
           <tr>
             <td class="image">
