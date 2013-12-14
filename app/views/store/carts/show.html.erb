@@ -3,6 +3,7 @@
   <% if cart_products.to_a.size %>
   <h1>Your cart</h1>
   <form action="/cart" method="post" id="cartform">
+    <input type="hidden" name="_method" value="PUT">
     <table>
       <thead>
         <tr>
@@ -26,7 +27,7 @@
               <%= link_to "<strong>#{product.title}<strong>".html_safe, product_url(product) %>
             </td>
             <td class="qty">
-              <input type="text" size="4" value="<%= cart_product.quantity %>">
+              <input type="text" size="4" name="updates[<%= cart_product.id %>]" value="<%= cart_product.quantity %>">
             </td>
             <td class="price"><%= number_to_currency(product.price) %></td>
             <td class="remove">

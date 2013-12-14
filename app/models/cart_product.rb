@@ -4,6 +4,9 @@ class CartProduct < ActiveRecord::Base
   belongs_to :cart, inverse_of: :cart_products
   belongs_to :product, inverse_of: :cart_products
 
+  validates :cart, :product, :quantity, presence: true
+  validates :quantity, numericality: true
+
   def self.find_by_cart_and_product_slug(cart, slug)
     query = <<-SQL
       SELECT cart_products.*, products.title FROM cart_products
