@@ -6,7 +6,7 @@ class Image < ActiveRecord::Base
   belongs_to :product, inverse_of: :images
 
   has_attached_file :photo, styles: {
-    big: "480x480#",
+    big: "360x360#",
     medium: "220x200#",
     thumb: "100x100#"
   }

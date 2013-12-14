@@ -15,8 +15,11 @@ group :development do
   gem 'binding_of_caller'
 end
 
+gem 'rack-mini-profiler'
+
 gem "paperclip"
-gem "aws-sdk"
+gem "fog"
+
 gem "figaro"
 
 gem 'turbolinks'

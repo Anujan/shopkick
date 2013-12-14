@@ -17,4 +17,8 @@ class CartProduct < ActiveRecord::Base
     self.quantity += 1
     save!
   end
+
+  def price
+    product.price * quantity
+  end
 end

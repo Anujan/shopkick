@@ -5,7 +5,6 @@ class Cart < ActiveRecord::Base
   has_many :products, through: :cart_products
 
   def total_price
-    products.sum(:price)
+    cart_products.inject(0) { |sum, cp| sum += cp.price }
   end
-
 end
