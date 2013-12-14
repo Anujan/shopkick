@@ -9,7 +9,7 @@ class Product < ActiveRecord::Base
   has_many :images, inverse_of: :product, dependent: :destroy
   accepts_nested_attributes_for :images
 
-  has_many :cart_products, inverse_of: :product
+  has_many :cart_products, inverse_of: :product, dependent: :destroy
   has_many :carts, through: :cart
 
   extend FriendlyId
