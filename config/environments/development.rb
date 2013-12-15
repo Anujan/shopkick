@@ -34,4 +34,16 @@ Shopkick::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  config.paperclip_defaults = {
+    storage: :fog,
+    fog_credentials: {
+      provider: "AWS",
+      aws_access_key_id: ENV['S3_ACCESS_KEY'],
+      aws_secret_access_key: ENV['S3_SECRET_KEY'],
+      endpoint: 'https://rest.s3for.me'
+    },
+    fog_directory: ENV['S3_BUCKET'],
+    fog_host: "http://rest.s3for.me/#{ENV['S3_BUCKET']}"
+  }
 end
