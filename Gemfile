@@ -13,9 +13,9 @@ group :development do
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'binding_of_caller'
+  gem 'bullet'
+  gem 'rack-mini-profiler'
 end
-
-gem 'rack-mini-profiler'
 
 gem "paperclip"
 gem "fog"

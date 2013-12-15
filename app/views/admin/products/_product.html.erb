@@ -5,7 +5,7 @@
   </div>
 <% end %>
 <div class="info">
-  <strong>Category: </strong><%= product.category %>
+  <strong>Category: </strong><%= link_to product.category.title, admin_category_url(product.category) %>
 </div>
 <div class="info">
   <strong>Description: </strong><%= product.description %>

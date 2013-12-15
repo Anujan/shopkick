@@ -9,7 +9,12 @@
   </div>
   <div class="form-group">
     <label for="type">Category</label>
-    <input type="text" name="product[category]" value="<%= @product.category %>" id="type">
+    <select name="product[category_id]" id="category">
+      <% Category.all.each do |category| %>
+        <option value="<%= category.id %>" 
+          <%= "selected" if @product.category_id == category.id %>><%= category.title %></option>
+      <% end %>
+    </select>
   </div>
   <div class="form-group">
     <label for="vendor">Vendor</label>

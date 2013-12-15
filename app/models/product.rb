@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :barcode, :description, :price, :sku, :title, :category,
+  attr_accessible :barcode, :description, :price, :sku, :title, :category, :category_id,
     :vendor, :visible, :images_attributes
   validates :title, :category, :price, :images, presence: true
 
@@ -12,6 +12,8 @@ class Product < ActiveRecord::Base
   has_many :cart_products, inverse_of: :product, dependent: :destroy
   has_many :carts, through: :cart
 
+  belongs_to :category
+  
   extend FriendlyId
   friendly_id :title, :use => :slugged
 end

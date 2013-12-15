@@ -1,0 +1,14 @@
+<h1>Categories</h1>
+<table border="0" cellspacing="5" cellpadding="5">
+  <tr>
+    <th>Title</th>
+    <th>Edit</th>
+  </tr>
+  <% @categories.each do |category| %>
+    <tr>
+      <td><%= link_to category.title, admin_category_url(category) %></td>
+      <td><%= link_to 'Edit', edit_admin_category_url(category) %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to "New Category", new_admin_category_url %>
