@@ -15,7 +15,14 @@ class Order < ActiveRecord::Base
   has_one :promotions, through: :order_promotions, source: :promotion
 
   def as_json(options)
-    options.merge!(include: [:customer, :products])
+    options.merge!(include: [:customer,
+      products: {
+        include: {
+          images: {
+            methods: [:big, :medium, :thumb]
+        }
+      }
+    }])
     super(options)
   end
 end

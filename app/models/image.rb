@@ -12,4 +12,16 @@ class Image < ActiveRecord::Base
   }
   validates_attachment_presence :photo
   validates_attachment_size :photo, :less_than => 5.megabytes
+
+  def big
+    photo.url(:big)
+  end
+
+  def medium
+    photo.url(:medium)
+  end
+
+  def thumb
+    photo.url(:thumb)
+  end
 end

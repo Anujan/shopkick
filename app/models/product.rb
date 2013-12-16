@@ -16,4 +16,9 @@ class Product < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :title, :use => :slugged
+
+  def as_json(options)
+    options.merge!({ include: :images })
+    super(options)
+  end
 end
