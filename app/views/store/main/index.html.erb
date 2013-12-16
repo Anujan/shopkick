@@ -1,7 +1,7 @@
 <section class='front-page'>
   <section class="featured-product">
     <h2>Featured Product</h2>
-    <%= render "store/products/big_product", product: @featured_product %>
+    <%= render "store/products/big_product", product: @featured_product unless @featured_product.nil?%>
   </section>
   <section class="products latest-products group">
     <h2>Latest Products</h2>

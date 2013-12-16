@@ -33,7 +33,7 @@ module SessionsHelper
   end
 
   def require_current_admin!
-    unless signed_in?
+    unless signed_in? && current_admin == current_store
       redirect_to sign_in_url(subdomain: false)
     end
   end
