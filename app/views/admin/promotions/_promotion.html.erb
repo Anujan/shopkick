@@ -1,0 +1,19 @@
+<div class="info">
+<strong>Code</strong><%= promotion.code %>
+</div>
+<div class="info">
+  <strong>Limit: </strong>
+  <%= promotion.limit == Float::INFINITY ? '&infin;' : promotion.limit  %>
+</div>
+<div class="info">
+  <strong>Discount Type: </strong>
+  <%= promotion.to_s %>
+</div>
+<div class="info">
+  <strong>Start Date: </strong>
+  <%= promotion.start_date %>
+</div>
+<div class="info">
+  <strong>End Date: </strong>
+  <%= promotion.end_date %>
+</div>

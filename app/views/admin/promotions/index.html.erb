@@ -1,0 +1,22 @@
+<h1>Promotions</h1>
+<table border="0" cellspacing="5" cellpadding="5">
+  <tr>
+    <th>Code</th>
+    <th>Details</th>
+    <th>Limit</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Edit</th>
+  </tr>
+  <% @promotions.each do |promotion| %>
+    <tr>
+      <td><%= link_to promotion.code, admin_promotion_url(promotion) %></td>
+      <td><%= promotion.to_s %></td>
+      <td><%= promotion.Limit %></td>
+      <td><%= promotion.start_date %></td>
+      <td><%= promotion.end_date %></td>
+      <td><%= link_to 'Edit', edit_admin_promotion_url(promotion) %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to "New Promotion", new_admin_promotion_url %>

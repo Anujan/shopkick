@@ -8,6 +8,9 @@ class Order < ActiveRecord::Base
 
   belongs_to :customer, inverse_of: :orders
 
-  has_many :order_products, class_name: 'OrderProduct'
+  has_many :order_products
   has_many :products, through: :order_products, source: :product
+
+  has_many :order_promotions
+  has_one :promotions, through: :order_promotions, source: :promotion
 end

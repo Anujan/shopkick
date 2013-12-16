@@ -72,5 +72,7 @@ module Shopkick
         fog_directory: ENV['S3_BUCKET'],
         fog_host: "http://rest.s3for.me/#{ENV['S3_BUCKET']}"
     }
+
+    config.generators.test_framework = false
   end
 end

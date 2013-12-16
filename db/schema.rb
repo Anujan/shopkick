@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131215044857) do
+ActiveRecord::Schema.define(:version => 20131215234450) do
 
   create_table "cart_products", :force => true do |t|
     t.integer  "product_id"
@@ -73,6 +73,16 @@ ActiveRecord::Schema.define(:version => 20131215044857) do
   add_index "order_products", ["order_id"], :name => "index_order_products_on_order_id"
   add_index "order_products", ["product_id"], :name => "index_order_products_on_product_id"
 
+  create_table "order_promotions", :force => true do |t|
+    t.integer  "promotion_id"
+    t.integer  "order_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "order_promotions", ["order_id"], :name => "index_order_promotions_on_order_id"
+  add_index "order_promotions", ["promotion_id"], :name => "index_order_promotions_on_promotion_id"
+
   create_table "orders", :force => true do |t|
     t.integer  "customer_id",                                                                   :null => false
     t.string   "payment_status",                                   :default => "Unpaid",        :null => false
@@ -114,6 +124,22 @@ ActiveRecord::Schema.define(:version => 20131215044857) do
     t.string   "address_postal_code"
     t.string   "address_city"
   end
+
+  create_table "promotions", :force => true do |t|
+    t.string   "code",                             :null => false
+    t.string   "option",                           :null => false
+    t.integer  "amount",                           :null => false
+    t.string   "applies_to",                       :null => false
+    t.string   "applies_to_arg"
+    t.date     "start_date",                       :null => false
+    t.date     "end_date"
+    t.integer  "limit"
+    t.boolean  "enabled",        :default => true, :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  add_index "promotions", ["code"], :name => "index_promotions_on_code", :unique => true
 
   create_table "sessions", :force => true do |t|
     t.integer  "store_id"
