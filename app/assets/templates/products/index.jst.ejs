@@ -14,7 +14,7 @@
       <td><a href="#products/<%= product.get('category').id %>"><%= product.get('category').escape('title') %></a></td>
       <td><%= NumberHelpers.number_to_currency(product.get('price')) %></td>
       <td class="button-group">
-        <a class="btn" id="edit" href="#products/<%= product.id %>/edit">Edit</a>
+        <a class="btn" id="edit" href="#products/<%= product.get("id") %>/edit">Edit</a>
     	</td>
       <td class="button-group">
       	<a class="cancel_btn" id="delete" href="#products" data-id=<%= product.id %>>

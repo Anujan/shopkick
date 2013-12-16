@@ -2,7 +2,8 @@ Shopkick.Views.ProductsForm = Backbone.View.extend({
   validation_errors: [],
 
   events: {
-    "submit" : 'submitForm'
+    "submit" : 'submitForm',
+    "change #image_upload" : "handleFiles"
   },
 
   template: JST['products/form'],
@@ -23,8 +24,10 @@ Shopkick.Views.ProductsForm = Backbone.View.extend({
   submitForm: function(event) {
     event.preventDefault();
     var json = $(event.currentTarget).serializeJSON();
+    json["product"]["images_attributes"] = [{ "photo": $(event.currentTarget).find("#image_upload").data("file") }]
     var model = this.model;
     var self = this;
+    this.$el.html("<h2>Please wait while we add the product...</h2>")
     model.save(json, {
       success: function() {
         Shopkick.Products.add(model, { at: 0 });
@@ -35,5 +38,15 @@ Shopkick.Views.ProductsForm = Backbone.View.extend({
         self.render();
       }
     });
+  },
+
+  handleFiles: function (event) {
+    var files = $(event.currentTarget)[0].files;
+    var file = files[0];
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      $("#image_upload").data("file", this.result);
+    }
+    reader.readAsDataURL(file);
   }
 });

@@ -9,13 +9,13 @@ window.Shopkick = {
     new Shopkick.Views.SideNavigation().render().$el.appendTo(Shopkick.$sidenav);
     Shopkick.$rootEl = $('#main-content');
     Shopkick.Orders = new Shopkick.Collections.Orders();
-    Shopkick.Orders.fetch({ success: function() {
-      Shopkick.Customers = new Shopkick.Collections.Customers();
-      Shopkick.Customers.fetch({ success: function() {
-        Shopkick.Products = new Shopkick.Collections.Products();
-        Shopkick.Products.fetch({ success: function() {
-          Shopkick.Categories = new Shopkick.Collections.Categories();
-          Shopkick.Categories.fetch({
+    Shopkick.Categories = new Shopkick.Collections.Categories();
+    Shopkick.Customers = new Shopkick.Collections.Customers();
+    Shopkick.Products = new Shopkick.Collections.Products();
+    Shopkick.Customers.fetch({ success: function() {
+      Shopkick.Products.fetch({ success: function() {
+        Shopkick.Categories.fetch({ success: function() {
+          Shopkick.Orders.fetch({
             success: function() {
               Shopkick.OrdersRouter = new Shopkick.Routers.Orders();
               Shopkick.CustomersRouter = new Shopkick.Routers.Customers();
