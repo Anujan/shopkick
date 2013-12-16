@@ -7,7 +7,6 @@ Shopkick.Routers.Orders = Backbone.Router.extend({
 	},
 
 	index: function() {
-
 		this._swapView(new Shopkick.Views.OrdersIndex({
 
 		}));

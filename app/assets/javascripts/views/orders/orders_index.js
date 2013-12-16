@@ -6,7 +6,7 @@ Shopkick.Views.OrdersIndex = Backbone.View.extend({
 		this.listenTo(Shopkick.Orders, "change", this.render);
 	},
 
-  template: HandlebarsTemplates['orders/index'],
+  template: JST['orders/index'],
   
   events: {
   	"click #delete" : "deleteOrder"
@@ -15,7 +15,7 @@ Shopkick.Views.OrdersIndex = Backbone.View.extend({
   render: function() {
  		this.$el.html(this.template(
  			{
- 				orders: Shopkick.Orders.toJSON({ keepAssociations: true })
+ 				orders: Shopkick.Orders
  			}
  		));
   	return this;

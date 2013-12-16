@@ -17,9 +17,3 @@ window.Shopkick = {
     Backbone.history.start();
   }
 };
-
-Handlebars.registerHelper('full_name', function() {
-  return new Handlebars.SafeString(
-    this.first_name + " " + this.last_name
-  );
-});
