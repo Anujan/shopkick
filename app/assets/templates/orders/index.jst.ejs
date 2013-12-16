@@ -16,8 +16,9 @@
       </td>
       <td><%= order.escape("payment_status") %></td>
       <td><%= order.escape("fulfillment_status") %></td>
-      <td>$<%= order.escape("price") %></td>
+      <td><%= NumberHelpers.number_to_currency(order.escape("price")) %></td>
       <td class="button-group">
+        <a class="btn" id="edit" href="#orders/<%= order.id %>/edit">Edit</a>
       	<a class="cancel_btn" id="delete" href="#orders" data-id=<%= order.id %>>
 		 		Delete
       	</a>
