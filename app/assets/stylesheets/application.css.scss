@@ -220,6 +220,11 @@ nav.store-top-nav > ul {
   }
 }
 
+.old-price {
+  text-decoration: line-through;
+  opacity: 0.4;
+}
+
 .featured-product {
   width: 80%;
   margin: auto;

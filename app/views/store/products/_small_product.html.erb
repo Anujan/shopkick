@@ -3,5 +3,10 @@
     <%= image_tag(product.images.first.photo.url(:thumb) ) %>
   </figure>
   <h4><%= product.title %></h4>
-  <span class="price"><%= number_to_currency product.price %></span>
+  <span class="price">
+  	<%= number_to_currency product.price %>
+  	<span class="old-price">
+      <%= number_to_currency(product.old_price) unless product.old_price.blank? %>
+    </span>
+  </span>
 </article>
