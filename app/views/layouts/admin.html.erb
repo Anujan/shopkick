@@ -1,9 +1,12 @@
 <%= render partial: 'admin/shared/top_nav' %>
 <div class="container group">
 	<%= render partial: 'admin/shared/side_nav' %>
-	<section class="admin-content">
+	<section id="main-content" class="admin-content">
     <%= render partial: 'shared/flash_messages' %>
 		<%= yield %>
 	</section>
 </div>
+<% content_for(:admin_js) do %>
+	<%= javascript_include_tag "admin" %>
+<% end %>
 <%= parent_layout 'application' %>

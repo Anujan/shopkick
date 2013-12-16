@@ -1,0 +1,30 @@
+<h1>Orders</h1>
+<table border="0" cellspacing="5" cellpadding="5">
+  <tr>
+    <th>Order ID</th>
+    <th>Customer Name</th>
+    <th>Payment Status</th>
+    <th>Fullfilment Status</th>
+    <th>Total Price</th>
+    <th></th>
+  </tr>
+  {{#each orders}}
+    <tr>
+      <td><a href="#orders/{{id}}">{{id}}</a></td>
+      <td>
+      	{{#with customer}}
+      		{{full_name}}
+    		{{/with}}
+      </td>
+      <td>{{payment_status}}</td>
+      <td>{{fulfillment_status}}</td>
+      <td>${{price}}</td>
+      <td class="button-group">
+      	<a class="cancel_btn" id="delete" href="#orders" data-id={{id}}>
+		 		Delete     	
+      	</a>
+    	</td>
+    </tr>
+  {{/each}}
+</table>
+<a href="#orders/new">New Order</a>

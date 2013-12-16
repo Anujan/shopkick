@@ -13,4 +13,9 @@ class Order < ActiveRecord::Base
 
   has_many :order_promotions
   has_one :promotions, through: :order_promotions, source: :promotion
+
+  def as_json(options)
+    options.merge!(include: :customer)
+    super(options)
+  end
 end
