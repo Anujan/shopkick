@@ -247,14 +247,17 @@ div#cart {
 }
 
 .alert {
-  width: 40%;
-  margin: auto;
+
   border: 4px solid white;
   &.notice {
     background-color: #2ecc71;
   }
   &.error {
     background-color: #e74c3c;
+  }
+  &.no-center {
+    width: 40%;
+    margin: 0;
   }
   border-radius: 15px;
   text-align: center;

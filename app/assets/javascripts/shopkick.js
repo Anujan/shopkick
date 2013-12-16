@@ -9,11 +9,12 @@ window.Shopkick = {
     new Shopkick.Views.SideNavigation().render().$el.appendTo(Shopkick.$sidenav);
     Shopkick.$rootEl = $('#main-content');
     Shopkick.Orders = new Shopkick.Collections.Orders();
-    Shopkick.Orders.fetch({
-      success: function() {
-          new Shopkick.Routers.Orders();
-        }
-    });
+    Shopkick.Orders.fetch();
+    Shopkick.Customers = new Shopkick.Collections.Customers();
+    Shopkick.Customers.fetch();
+    Shopkick.Products = new Shopkick.Collections.Products();
+    Shopkick.Products.fetch();
+    Shopkick.OrdersRouter = new Shopkick.Routers.Orders();
     Backbone.history.start();
   }
 };

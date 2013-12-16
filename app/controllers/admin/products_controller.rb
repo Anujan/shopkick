@@ -1,8 +1,9 @@
 class Admin::ProductsController < Admin::BaseController
   before_filter :current_product, only: [:edit, :update, :destroy, :show]
+  respond_to :json, :html
 
   def index
-    @products = Product.order('created_at DESC')
+    respond_with(@products = Product.order('created_at DESC'))
   end
 
   def new
@@ -12,11 +13,22 @@ class Admin::ProductsController < Admin::BaseController
   def create
     @product = Product.new(params[:product])
     if @product.save
-      flash[:notice] = "Product `#{@product.title}` has been created!"
-      redirect_to admin_products_url
+      respond_with do |format|
+        format.html do
+          flash[:notice] = "Product `#{@product.title}` has been created!"
+          redirect_to admin_products_url
+        end
+        format.json { render json: @product }
+      end
+
     else
-      flash.now[:errors] = @product.errors.full_messages
-      render :new
+      respond_with do |format|
+        format.html do
+          flash.now[:errors] = @product.errors.full_messages
+          render :new
+        end
+        format.json { render json: @product.errors.full_messages }
+      end
     end
   end
 
@@ -29,17 +41,30 @@ class Admin::ProductsController < Admin::BaseController
   def update
     if @product.update_attributes(params[:product])
       flash[:notice] = "Product `#{@product.title}` has been updated!"
-      redirect_to admin_products_url
+      respond_with do |format|
+        format.html { redirect_to admin_products_url }
+        format.json { render json: @product }
+      end
     else
-      flash.now[:errors] = @product.errors.full_messsages
-      render :edit
+      respond_with do |format|
+        format.html do
+          flash.now[:errors] = @product.errors.full_messages
+          render :edit
+        end
+        format.json { render json: @product.errors.full_messages }
+      end
     end
   end
 
   def destroy
     if @product.destroy
-      flash[:notice] = "Product `#{@product.title}` has been deleted!"
-      redirect_to admin_products_url
+      respond_with do |format|
+        format.html do
+          flash[:notice] = "Product `#{@product.title}` has been deleted!"
+          redirect_to admin_products_url
+        end
+        format.json { head :ok }
+      end
     end
   end
 

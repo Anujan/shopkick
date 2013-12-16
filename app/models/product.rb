@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
   attr_accessible :barcode, :description, :price, :sku, :title, :category, :category_id,
-    :vendor, :visible, :images_attributes
+    :vendor, :visible, :images_attributes, :old_price
   validates :title, :category, :price, :images, presence: true
 
   has_many :order_products
@@ -13,7 +13,7 @@ class Product < ActiveRecord::Base
   has_many :carts, through: :cart
 
   belongs_to :category
-  
+
   extend FriendlyId
   friendly_id :title, :use => :slugged
 end

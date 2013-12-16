@@ -14,7 +14,6 @@ group :development do
   gem 'quiet_assets'
   gem 'binding_of_caller'
   gem 'bullet'
-  gem 'rack-mini-profiler'
 end
 
 gem 'backbone-on-rails'

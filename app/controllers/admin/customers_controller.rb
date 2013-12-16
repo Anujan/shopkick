@@ -1,8 +1,9 @@
 class Admin::CustomersController < Admin::BaseController
   before_filter :current_customer, only: [:edit, :update, :destroy, :show]
+  respond_to :json, :html
 
   def index
-    @customers = Customer.order('created_at DESC')
+    respond_with(@customers = Customer.order('created_at DESC'))
   end
 
   def new
@@ -12,11 +13,22 @@ class Admin::CustomersController < Admin::BaseController
   def create
     @customer = Customer.new(params[:customer])
     if @customer.save
-      flash[:notice] = "Customer `#{@customer.full_name}` has been created!"
-      redirect_to admin_customers_url
+      respond_with do |format|
+        format.html do
+          flash[:notice] = "Customer `#{@customer.full_name}` has been created!"
+          redirect_to admin_customers_url
+        end
+        format.json { render json: @customer }
+      end
+
     else
-      flash.now[:errors] = @customer.errors.full_messages
-      render :new
+      respond_with do |format|
+        format.html do
+          flash.now[:errors] = @customer.errors.full_messages
+          render :new
+        end
+        format.json { render json: @customer.errors.full_messages }
+      end
     end
   end
 
@@ -29,17 +41,30 @@ class Admin::CustomersController < Admin::BaseController
   def update
     if @customer.update_attributes(params[:customer])
       flash[:notice] = "Customer `#{@customer.full_name}` has been updated!"
-      redirect_to admin_customers_url
+      respond_with do |format|
+        format.html { redirect_to admin_customers_url }
+        format.json { render json: @customer }
+      end
     else
-      flash.now[:errors] = @customer.errors.full_messsages
-      render :edit
+      respond_with do |format|
+        format.html do
+          flash.now[:errors] = @customer.errors.full_messages
+          render :edit
+        end
+        format.json { render json: @customer.errors.full_messages }
+      end
     end
   end
 
   def destroy
     if @customer.destroy
-      flash[:notice] = "Customer `#{@customer.full_name}` has been deleted!"
-      redirect_to admin_customers_url
+      respond_with do |format|
+        format.html do
+          flash[:notice] = "Customer `#{@customer.full_name}` has been deleted!"
+          redirect_to admin_customers_url
+        end
+        format.json { head :ok }
+      end
     end
   end
 

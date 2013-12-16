@@ -1,0 +1,62 @@
+<div class="alert error no-center">
+  <% errors.forEach(function(error) { %>
+    <p><%= error %></p>
+  <% }) %>
+</div>
+<div class="form-group">
+  <label for="customer">Customer</label>
+  <select name="order[customer_id]" id="customer">
+    <% Shopkick.Customers.each(function(customer) {  %>
+      <option value="<%= customer.id %>"><%= customer.full_name() %></option>
+    <% }) %>
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="fulfillment_status">Fulfillment Status</label>
+  <select name="order[fulfillment_status]" id="fulfillment_status">
+    <% order.FULFILLMENT_STATUSES.forEach(function(status) {  %>
+      <option value="<%= status %>"
+      <%
+        if (status == order.get('fulfillment_status')) {
+          print("selected");
+        }
+      %>><%= status %></option>
+    <% }) %>
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="payment_status">Payment Status</label>
+  <select name="order[payment_status]" id="payment_status">
+    <% order.PAYMENT_STATUSES.forEach(function(status) {  %>
+      <option value="<%= status %>"
+      <%
+        if (status == order.get('payment_status')) {
+          print("selected");
+        }
+      %>><%= status %></option>
+    <% }) %>
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="products">Products</label>
+  <select name="order[product_ids][]" id="order[product_ids]" multiple>
+    <% Shopkick.Products.each(function(product) { %>
+        <option value="<%= product.id %>"
+        <% if (order.get('products') && order.get('products').get(product)) { print("selected") } %>
+        ><%= product.escape('title') %></option>
+    <% }) %>
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="price">Total Price</label >
+  <input type="number" name="order[price]" min="0.01" step="0.01" value="<%= order.get('price') %>">
+</div>
+
+<div class="form-group button-group">
+  <a href="#/orders" class="btn cancel_btn">Cancel</a>
+  <input type="submit" value="Save">
+</div>

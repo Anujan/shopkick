@@ -16,14 +16,11 @@ module SessionsHelper
     if signed_in?
       logout!
     end
-
     sess = store.sessions.create(ip_address: request.ip, user_agent: request.env['HTTP_USER_AGENT'])
-    puts sess.token
     remember_cookie = { value: sess.token, domain: :all }
     if remember_me
       remember_cookie[:expires] = 30.days.from_now
     end
-
     cookies.signed[:token] = remember_cookie
   end
 
@@ -33,7 +30,7 @@ module SessionsHelper
   end
 
   def require_current_admin!
-    unless signed_in? && current_admin == current_store
+    unless signed_in?
       redirect_to sign_in_url(subdomain: false)
     end
   end
