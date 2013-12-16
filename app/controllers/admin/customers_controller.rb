@@ -27,7 +27,7 @@ class Admin::CustomersController < Admin::BaseController
           flash.now[:errors] = @customer.errors.full_messages
           render :new
         end
-        format.json { render json: @customer.errors.full_messages }
+        format.json { render json: @customer.errors.full_messages, status: :unprocessable_entity }
       end
     end
   end
@@ -51,7 +51,7 @@ class Admin::CustomersController < Admin::BaseController
           flash.now[:errors] = @customer.errors.full_messages
           render :edit
         end
-        format.json { render json: @customer.errors.full_messages }
+        format.json { render json: @customer.errors.full_messages, status: :unprocessable_entity }
       end
     end
   end

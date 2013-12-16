@@ -1,0 +1,23 @@
+<h3><%= product.escape('title') %></h3>
+<% if (product.get('images').length > 0) { %>
+  <div class="product_image">
+    <img src="<%= product.get('images').first().get('medium') %>">
+  </div>
+<% } %>
+<div class="info">
+</div>
+<div class="info">
+  <strong>Description: </strong><%= product.escape('description') %>
+</div>
+<div class="info">
+  <strong>Price: </strong><%= NumberHelpers.number_to_currency(product.escape('price')) %>
+</div>
+<div class="info">
+  <strong>Vendor: </strong><%= product.escape('vendor') %>
+</div>
+<div class="info">
+  <strong>SKU: </strong><%= product.escape('sku') %>
+</div>
+<div class="info">
+  <strong>Barcode: </strong><%= product.escape('barcode') %>
+</div>

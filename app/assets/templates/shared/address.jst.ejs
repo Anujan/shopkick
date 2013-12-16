@@ -1,0 +1,7 @@
+<address>
+<%= model.full_name() %><br>
+<%= model.escape('address_street') %><br>
+<%= model.escape('address_city') %>, <%= model.escape('address_state') %><br>
+<%= model.escape('address_country') %><br>
+<%= NumberHelpers.number_to_phone(model.escape('phone_number')) %>
+</address>

@@ -1,0 +1,1 @@
+Shopkick.Models.Image = Backbone.Model.extend({});

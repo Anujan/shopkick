@@ -1,0 +1,1 @@
+Shopkick.Collections.Images = Backbone.Collection.extend({});

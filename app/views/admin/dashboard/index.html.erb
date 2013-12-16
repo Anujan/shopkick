@@ -1,6 +1,8 @@
 <h2>Welcome to the administration panel for the store: <%= current_admin.name %>!</h2>
 <script>
 	$(document).ready(function() {
-		window.Shopkick.initialize();
+    if (!Backbone.history.options) {
+      window.Shopkick.initialize();
+    }
 	});
 </script>
