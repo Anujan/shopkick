@@ -14,9 +14,15 @@ window.Shopkick = {
       Shopkick.Customers.fetch({ success: function() {
         Shopkick.Products = new Shopkick.Collections.Products();
         Shopkick.Products.fetch({ success: function() {
-          Shopkick.OrdersRouter = new Shopkick.Routers.Orders();
-          Shopkick.CustomersRouter = new Shopkick.Routers.Customers();
-          Backbone.history.start();
+          Shopkick.Categories = new Shopkick.Collections.Categories();
+          Shopkick.Categories.fetch({
+            success: function() {
+              Shopkick.OrdersRouter = new Shopkick.Routers.Orders();
+              Shopkick.CustomersRouter = new Shopkick.Routers.Customers();
+              Shopkick.ProductsRouter = new Shopkick.Routers.Products();
+              Backbone.history.start();
+            }
+          });
         }});
       }});
     }});

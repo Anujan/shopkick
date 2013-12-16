@@ -18,7 +18,7 @@ class Product < ActiveRecord::Base
   friendly_id :title, :use => :slugged
 
   def as_json(options)
-    options.merge!({ include: :images })
+    options.merge!({ include: [:images, :category] })
     super(options)
   end
 end

@@ -1,8 +1,9 @@
 class Admin::CategoriesController < Admin::BaseController
   before_filter :current_category, only: [:edit, :update, :destroy, :show]
+  respond_to :json, :html
 
   def index
-    @categories = Category.order('created_at DESC')
+    respond_with(@categories = Category.includes(:products).order('created_at DESC'))
   end
 
   def new
@@ -12,11 +13,22 @@ class Admin::CategoriesController < Admin::BaseController
   def create
     @category = Category.new(params[:category])
     if @category.save
-      flash[:notice] = "Category `#{@category.title}` has been created!"
-      redirect_to admin_categories_url
+      respond_with do |format|
+        format.html do
+          flash[:notice] = "Category `#{@category.title}` has been created!"
+          redirect_to admin_categories_url
+        end
+        format.json { render json: @category }
+      end
+
     else
-      flash.now[:errors] = @category.errors.full_messages
-      render :new
+      respond_with do |format|
+        format.html do
+          flash.now[:errors] = @category.errors.full_messages
+          render :new
+        end
+        format.json { render json: @category.errors.full_messages, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -29,17 +41,30 @@ class Admin::CategoriesController < Admin::BaseController
   def update
     if @category.update_attributes(params[:category])
       flash[:notice] = "Category `#{@category.title}` has been updated!"
-      redirect_to admin_categories_url
+      respond_with do |format|
+        format.html { redirect_to admin_categories_url }
+        format.json { render json: @category }
+      end
     else
-      flash.now[:errors] = @category.errors.full_messsages
-      render :edit
+      respond_with do |format|
+        format.html do
+          flash.now[:errors] = @category.errors.full_messages
+          render :edit
+        end
+        format.json { render json: @category.errors.full_messages, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     if @category.destroy
-      flash[:notice] = "Category `#{@category.title}` has been deleted!"
-      redirect_to admin_categories_url
+      respond_with do |format|
+        format.html do
+          flash[:notice] = "Category `#{@category.title}` has been deleted!"
+          redirect_to admin_categories_url
+        end
+        format.json { head :ok }
+      end
     end
   end
 

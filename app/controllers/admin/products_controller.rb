@@ -3,7 +3,7 @@ class Admin::ProductsController < Admin::BaseController
   respond_to :json, :html
 
   def index
-    respond_with(@products = Product.order('created_at DESC'))
+    respond_with(@products = Product.includes(:images).order('created_at DESC'))
   end
 
   def new
