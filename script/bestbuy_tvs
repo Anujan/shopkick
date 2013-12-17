@@ -22,10 +22,15 @@ URLS.map do |category, url|
 	  item[:title] = p.inner_text.strip
 	  price = product.search('.info-side > div > .price > span').inner_text.gsub("$", "")
 	  item[:price] = price
+	  old_price = product.search('.info-side > div > .regular > span').inner_text.gsub("$", "")
+	  unless old_price == price
+	  	item[:old_price] = old_price
+  	end
 	  inner_page = page.link_with(href: p.attr('href').value).click
 	  item[:description] = inner_page.search("#long-description").text.strip
 	  image = inner_page.search('.image-gallery-main-slide img')
 	  item[:image] = image.attr('src').value
+	  item[:sku] = inner_page.search('#sku-value').text
 	  results[category] << item unless item.values.any?(&:empty?)
 	end
 end
