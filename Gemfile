@@ -21,7 +21,6 @@ gem 'backbone-on-rails'
 gem "paperclip"
 gem "fog"
 
-
 gem "figaro"
 gem 'friendly_id'
 
@@ -36,5 +35,3 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'thin'
 
 gem 'mechanize'
-
-gem 'geocoder'

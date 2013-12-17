@@ -1,7 +1,9 @@
 <address>
-<%= model.full_name() %><br>
 <%= model.escape('address_street') %><br>
 <%= model.escape('address_city') %>, <%= model.escape('address_state') %><br>
 <%= model.escape('address_country') %><br>
 <%= NumberHelpers.number_to_phone(model.escape('phone_number')) %>
 </address>
+<div id="address-map">
+<iframe width='425' height='350' frameborder='0' scrolling='no'  marginheight='0' marginwidth='0'   src='https://maps.google.com/maps?&amp;q= <%= encodeURIComponent(model.full_address()) %>&amp;output=embed'></iframe>
+</div>

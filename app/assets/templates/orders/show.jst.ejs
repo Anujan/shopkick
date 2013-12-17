@@ -1,9 +1,10 @@
 <h1>Order #<%= order.get("id") %></h1>
-<div id="customer">
+<div id="customer" class="info">
+  <h2><%= order.customer_name() %></h2>
   <%= JST['customers/_customer']({ customer: order.get('customer') }) %>
 </div>
 <h2>Products</h2>
-<div class="order_product">
+<div class="order_product" class="info">
   <% order.get("products").each(function(product) { %>
     <%= JST['products/_product']({ product: product }) %>
   <% }) %>
