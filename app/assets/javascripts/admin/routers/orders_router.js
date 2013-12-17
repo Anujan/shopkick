@@ -6,12 +6,20 @@ Shopkick.Routers.Orders = Backbone.Router.extend({
 		"orders/:id": "show"
 	},
 
+  fetched: false,
+
+  collection: function() {
+    return Shopkick.Orders;
+  },
+
 	index: function() {
 		this._swapView(new Shopkick.Views.OrdersIndex());
 	},
 
 	edit: function (id) {
-    this._swapView(new Shopkick.Views.OrdersEdit( { model: Shopkick.Orders.get(parseInt(id)) }));
+    this._swapView(new Shopkick.Views.OrdersEdit(), {
+      modelId: parseInt(id)
+    });
 	},
 
 	create: function () {
@@ -19,6 +27,8 @@ Shopkick.Routers.Orders = Backbone.Router.extend({
 	},
 
   show: function (id) {
-    this._swapView(new Shopkick.Views.OrdersShow( { model: Shopkick.Orders.get(parseInt(id)) }));
+    this._swapView(new Shopkick.Views.OrdersShow(), {
+      modelId: parseInt(id)
+    });
   }
 });

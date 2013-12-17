@@ -1,0 +1,14 @@
+<div class="alert error no-center">
+  <% errors.forEach(function(error) { %>
+    <p><%= error %></p>
+  <% }) %>
+</div>
+<div class="form-group">
+  <label for="title">Title</label>
+  <input type="text" name="category[title]" value="<%= category.escape('title') %>" id="title">
+</div>
+
+<div class="form-group button-group">
+  <a href="#categories" class="btn cancel_btn">Cancel</a>
+  <input type="submit" value="Save">
+</div>
