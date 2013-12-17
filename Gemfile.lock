@@ -88,7 +88,6 @@ GEM
     formatador (0.2.4)
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
-    geocoder (1.1.9)
     hike (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -200,7 +199,6 @@ DEPENDENCIES
   figaro
   fog
   friendly_id
-  geocoder
   jquery-rails
   kaminari
   mechanize

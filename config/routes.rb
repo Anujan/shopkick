@@ -14,6 +14,7 @@ Shopkick::Application.routes.draw do
       resource :cart, only: [:show, :update] do
         resources :products, only: [:create, :destroy, :update]
       end
+      resources :categories, only: [:show]
     end
   end
 

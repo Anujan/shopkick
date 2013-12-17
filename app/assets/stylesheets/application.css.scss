@@ -171,12 +171,51 @@ nav.store-top-nav > ul {
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   margin: auto;
-  width: 40%;
+  width: 1000px;
+  a, a:visited {
+    color: inherit;
+  }
+  a:hover {
+    color: #4479BA;
+  }
   > li {
     float: left;
-    padding: 3% 10%;
+    width: 200px;
+    padding: 2%;
+    text-align: center;
     font-size: 16px;
   }
+}
+
+nav .has-dropdown {
+  &:hover > ul {
+    display: block;
+  }
+  position: relative;
+}
+nav .has-dropdown:hover > ul {
+  display: block;
+}
+
+.is-dropdown {
+  display: none;
+  position: absolute;
+  width: 200px;
+  background: #f1f1f1;
+  border: 2px solid #ffffff;
+  > a {
+    padding: 3px;
+    border-top: 2px solid #ffffff;
+    display: block;
+    &:hover {
+      background: #ccc;
+    }
+    color: black;
+  }
+  > a:first-child {
+    border: 0;
+  }
+
 }
 
 .store-content {
@@ -238,7 +277,8 @@ nav.store-top-nav > ul {
   border-bottom: 2px solid #ccc;
 }
 
-.front-page > section > h2 {
+.front-page > section > h2,
+.category-title {
   text-align: center;
   margin-top: 20px;
   font-style: italic;

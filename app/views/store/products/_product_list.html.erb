@@ -1,5 +1,5 @@
 <% products.each do |product| %>
-  <%= render partial: "product_list_item", locals: { product: product } %>
+  <%= render partial: "store/products/product_list_item", locals: { product: product } %>
 <% end %>
 
 <%= "No more products..." if products.empty? %>

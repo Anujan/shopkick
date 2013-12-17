@@ -1,0 +1,6 @@
+<h2 class="category-title"><%= @category.title %></h2>
+<section id="endless" class="group products">
+  <%= render partial: "store/products/product_list", locals: { products: @products } %>
+</section>
+<div id="pagination-holder">
+</div>
