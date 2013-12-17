@@ -1,0 +1,23 @@
+<tr>
+  <th>Title</th>
+  <th>Category</th>
+  <th>Price</th>
+  <th></th>
+</tr>
+<% products.each(function(product) { %>
+  <tr>
+    <td>
+      <a href="#products/<%= product.id %>"><%= product.escape('title') %></a>
+    </td>
+    <td><a href="#categories/<%= product.get('category').id %>"><%= product.get('category').escape('title') %></a></td>
+    <td><%= NumberHelpers.number_to_currency(product.get('price')) %></td>
+    <td class="button-group">
+      <a class="btn" id="edit" href="#products/<%= product.get("id") %>/edit">Edit</a>
+  	</td>
+    <td class="button-group">
+    	<a class="cancel_btn" id="delete" href="#products" data-id=<%= product.id %>>
+	 		Delete
+    	</a>
+    </td>
+  </tr>
+<% }) %>

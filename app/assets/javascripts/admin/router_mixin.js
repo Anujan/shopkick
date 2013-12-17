@@ -22,3 +22,9 @@ _.extend(Backbone.Router.prototype, {
     }
   },
 });
+
+_.extend(Backbone.Collection.prototype, {
+  filterCollection: function (iterator) {
+    return new this.constructor(this.filter(iterator));
+  }
+});

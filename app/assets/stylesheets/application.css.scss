@@ -130,6 +130,13 @@ input, textarea {
   &:focus {
     border: 1px solid #4C90EE;
   }
+  &#filter {
+    width: 80%;
+    margin: 20px;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 4px;
+  }
 }
 
 label {

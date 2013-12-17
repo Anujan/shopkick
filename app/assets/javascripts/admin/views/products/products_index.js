@@ -1,9 +1,13 @@
 Shopkick.Views.ProductsIndex = Backbone.View.extend({
 
 	initialize: function() {
-		this.listenTo(Shopkick.Products, "remove", this.render);
-		this.listenTo(Shopkick.Products, "add", this.render);
-		this.listenTo(Shopkick.Products, "change", this.render);
+    this.filterView = new Shopkick.Views.TableFilter({
+      collection: Shopkick.Products
+    });
+
+    this.tableView = new Shopkick.Views.ProductsTable({
+      filteredView: this.filterView
+    });
 	},
 
   template: JST['products/index'],
@@ -13,11 +17,11 @@ Shopkick.Views.ProductsIndex = Backbone.View.extend({
   },
 
   render: function() {
- 		this.$el.html(this.template(
- 			{
- 				products: Shopkick.Products
- 			}
- 		));
+ 		this.$el.html(this.template({
+ 		  products: this.filterView.filteredCollection()
+ 		}));
+    this.$("#filter-field").append(this.filterView.$el);
+    this.$("#products-table").append(this.tableView.render().$el);
   	return this;
   },
 

@@ -23,9 +23,10 @@ URLS.map do |category, url|
     p = product.search('a[rel=product]')
     item = {}
     item[:title] = p.inner_text.strip
-    price = product.search('.info-side > div > .price > span').inner_text.gsub("$", "")
+    item[:title] = item[:title][25..-1] if item[:title].start_with?("Available from")
+    price = product.search('.info-side > div > .price > span').inner_text.gsub("$", "").gsub(",", "")
     item[:price] = price
-    old_price = product.search('.info-side > div > .regular > span').inner_text.gsub("$", "")
+    old_price = product.search('.info-side > div > .regular > span').inner_text.gsub("$", "").gsub(",", "")
     unless old_price == price || old_price.to_s.empty?
       item[:old_price] = old_price
     end
