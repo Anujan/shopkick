@@ -29,7 +29,7 @@ gem 'friendly_id'
 
 gem 'apartment'
 
-gem 'liquid'
+gem 'kaminari'
 
 gem 'jquery-rails'
 

@@ -1,5 +1,5 @@
-<section class="group products">
-  <% @products.each do |product| %>
-    <%= link_to (render "small_product", product: product).html_safe, product %>
-  <% end %>
+<section id="endless" class="group products">
+  <%= render partial: "product_list", locals: { products: @products } %>
 </section>
+<div id="pagination-holder">
+</div>

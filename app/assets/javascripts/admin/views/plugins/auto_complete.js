@@ -152,6 +152,5 @@ var AutoCompleteView = Backbone.View.extend({
         return this;
     },
 
-    // callback definitions
     onSelect: function () {}
 });

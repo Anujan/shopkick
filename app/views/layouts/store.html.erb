@@ -3,4 +3,7 @@
   <%= render partial: 'shared/flash_messages' %>
   <%= yield %>
 </section>
+<% content_for(:admin_js) do %>
+	<%= javascript_include_tag "store/store" %>
+<% end %>
 <%= parent_layout 'application' %>
