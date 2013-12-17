@@ -13,25 +13,28 @@ results = {}
 
 agent = Mechanize.new
 
-URLS.map do |category, url| 
-	page = agent.get(url)
-	results[category] = []
-	page.search(".hproduct").each do |product|
-	  p = product.search('a[rel=product]')
-	  item = {}
-	  item[:title] = p.inner_text.strip
-	  price = product.search('.info-side > div > .price > span').inner_text.gsub("$", "")
-	  item[:price] = price
-	  old_price = product.search('.info-side > div > .regular > span').inner_text.gsub("$", "")
-	  unless old_price == price
-	  	item[:old_price] = old_price
-  	end
-	  inner_page = page.link_with(href: p.attr('href').value).click
-	  item[:description] = inner_page.search("#long-description").text.strip
-	  image = inner_page.search('.image-gallery-main-slide img')
-	  item[:image] = image.attr('src').value
-	  item[:sku] = inner_page.search('#sku-value').text
-	  results[category] << item unless item.values.any?(&:empty?)
-	end
+URLS.map do |category, url|
+  page = agent.get(url)
+  results[category] = []
+  page.search(".hproduct").each do |product|
+    p = product.search('a[rel=product]')
+    item = {}
+    item[:title] = p.inner_text.strip
+    price = product.search('.info-side > div > .price > span').inner_text.gsub("$", "")
+    item[:price] = price
+    old_price = product.search('.info-side > div > .regular > span').inner_text.gsub("$", "")
+    unless old_price == price
+      item[:old_price] = old_price
+    end
+    inner_page = page.link_with(href: p.attr('href').value).click
+    item[:description] = inner_page.search("#long-description").text.strip
+    image = inner_page.search('.image-gallery-main-slide img')
+    if image.empty?
+      image = inner_page.search("#imagepreview img")
+    end
+    next if image.empty?
+    item[:image] = image.attr('src').value
+    item[:sku] = inner_page.search('#sku-value').text unless inner_page.search("#sku-value").empty?
+    puts item
+  end
 end
-puts results
