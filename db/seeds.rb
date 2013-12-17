@@ -1,22 +1,40 @@
-require 'nokogiri'
-require 'open-uri'
+require 'mechanize'
 
-store = Store.create!(name: 'bookstore', email: 'example@shopkick.co', password: 'demo123')
-category = Category.create(title: "Newest Releases")
+store = Store.create!(name: 'DigitalDream', email: 'digital@shopkick.co', password: 'demo123')
 
-URL = 'http://www.amazon.com/s/ref=lp_283155_nr_p_n_publication_date_0?rh=n%3A283155%2Cp_n_publication_date%3A1250226011&bbn=283155&ie=UTF8&qid=1386952388&rnid=1250225011'
-page = Nokogiri::HTML(open(URL))
-page.css(".product").each do |product|
-  p = product.css('.productTitle > a')
-  book = {}
-  book[:title] = p.inner_text.strip
-  img = product.css('.productImage > a > img')
-  book[:images_attributes] = Array.new()
-  book[:images_attributes] << { :photo => URI.parse(img.attr('src').value) }
-  price = product.css('.newPrice > span').inner_text.gsub("$", "")
-  book[:price] = price
-  book[:category] = category
-  book[:description] = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  Product.create!(book)
+URLS = {
+  "LCD" => "http://www.bestbuy.com/site/olstemplatemapper.jsp?_dyncharset=ISO-8859-1&_dynSessConf=4038258141416413124&id=pcat17071&type=page&ks=960&st=pcmcat193400050017_categoryid%24abcat0101001&sc=Global&cp=1&sp=-bestsellingsort+skuidsaas&qp=tvtype_facet%3DSAAS~TV+Type~LCD+Flat-Panel&list=n&usc=All+Categories&nrp=25&fs=saas&iht=n&seeAll=&browsedCategory=pcmcat193400050017",
+  "LED" => "http://www.bestbuy.com/site/olstemplatemapper.jsp?_dyncharset=ISO-8859-1&_dynSessConf=4038258141416413124&id=pcat17071&type=page&ks=960&st=pcmcat193400050018_categoryid%24abcat0101001&sc=Global&cp=1&sp=-bestsellingsort+skuidsaas&qp=tvtype_facet%3DSAAS~TV+Type~LED+Flat-Panel&list=n&usc=All+Categories&nrp=25&fs=saas&iht=n&seeAll=&browsedCategory=pcmcat193400050018",
+  "Plasma" => "http://www.bestbuy.com/site/olstemplatemapper.jsp?_dyncharset=ISO-8859-1&_dynSessConf=4038258141416413124&id=pcat17071&type=page&ks=960&st=pcmcat193400050016_categoryid%24abcat0101001&sc=Global&cp=1&sp=-bestsellingsort+skuidsaas&qp=tvtype_facet%3DSAAS~TV+Type~Plasma+Flat-Panel&list=n&usc=All+Categories&nrp=25&fs=saas&iht=n&seeAll=&browsedCategory=pcmcat193400050016",
+  "OLED" => "http://www.bestbuy.com/site/televisions/oled-tvs/pcmcat301000050010.c?id=pcmcat301000050010",
+  "3D" => "http://www.bestbuy.com/site/televisions/3d-tvs/pcmcat205800050000.c?id=pcmcat205800050000",
+  "SmartTV" => "http://www.bestbuy.com/site/televisions/smart-tvs/pcmcat220700050011.c?id=pcmcat220700050011"
+}
+
+results = {}
+
+agent = Mechanize.new
+
+URLS.map do |category, url|
+  category = Category.create!(title: category)
+  page = agent.get(url)
+  results[category] = []
+  page.search(".hproduct").each do |product|
+    p = product.search('a[rel=product]')
+    item = {}
+    item[:title] = p.inner_text.strip
+    price = product.search('.info-side > div > .price > span').inner_text.gsub("$", "")
+    item[:price] = price
+    old_price = product.search('.info-side > div > .regular > span').inner_text.gsub("$", "")
+    unless old_price == price
+      item[:old_price] = old_price
+    end
+    inner_page = page.link_with(href: p.attr('href').value).click
+    item[:description] = inner_page.search("#long-description").text.strip
+    image = inner_page.search('.image-gallery-main-slide img')
+    item[:image] = image.attr('src').value
+    item[:sku] = inner_page.search('#sku-value').text
+    item[:category_id] = category.id
+    Product.create!(item) unless item.values.any?(&:empty?)
+  end
 end
-
