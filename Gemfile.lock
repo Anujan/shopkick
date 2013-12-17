@@ -88,6 +88,7 @@ GEM
     formatador (0.2.4)
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
+    geocoder (1.1.9)
     hike (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -175,8 +176,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.0.0)
-      coffee-rails
     tzinfo (0.3.38)
     uglifier (2.3.2)
       execjs (>= 0.3.0)
@@ -201,6 +200,7 @@ DEPENDENCIES
   figaro
   fog
   friendly_id
+  geocoder
   jquery-rails
   kaminari
   mechanize
@@ -210,5 +210,4 @@ DEPENDENCIES
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
   thin
-  turbolinks
   uglifier (>= 1.0.3)

@@ -11,4 +11,8 @@ class Customer < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def full_address
+    [address_street, address_city, address_state, address_country].compact.join(', ')
+  end
 end
