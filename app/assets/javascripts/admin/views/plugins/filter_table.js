@@ -1,10 +1,10 @@
-Shopkick.Views.ProductsTable = Backbone.View.extend({
+Shopkick.Views.FilterTable = Backbone.View.extend({
   initialize: function(options) {
     this.filterView = options.filteredView;
     this.listenTo(this.filterView, "filter", this.render);
+    this.template = options.template;
+    this.key = options.key || "models";
   },
-
-  template: JST['products/table'],
 
   tagName: 'table',
 
@@ -14,11 +14,9 @@ Shopkick.Views.ProductsTable = Backbone.View.extend({
   },
 
   render: function() {
- 		this.$el.html(this.template(
- 			{
- 				products: this.filterView.filteredCollection()
- 			}
- 		));
+    var params = {};
+    params[this.key] = this.filterView.filteredCollection();
+ 		this.$el.html(this.template(params));
   	return this;
   }
 });

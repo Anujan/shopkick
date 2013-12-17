@@ -1,9 +1,16 @@
 Shopkick.Views.CustomersIndex = Backbone.View.extend({
 
 	initialize: function() {
-		this.listenTo(Shopkick.Customers, "remove", this.render);
-		this.listenTo(Shopkick.Customers, "add", this.render);
-		this.listenTo(Shopkick.Customers, "change", this.render);
+    this.filterView = new Shopkick.Views.FilterInput({
+      collection: Shopkick.Customers,
+      searchAttributes: ["full_name"]
+    });
+
+    this.tableView = new Shopkick.Views.FilterTable({
+      filteredView: this.filterView,
+      template: JST['customers/table'],
+      key: "customers"
+    });
 	},
 
   template: JST['customers/index'],
@@ -13,11 +20,9 @@ Shopkick.Views.CustomersIndex = Backbone.View.extend({
   },
 
   render: function() {
- 		this.$el.html(this.template(
- 			{
- 				customers: Shopkick.Customers
- 			}
- 		));
+ 		this.$el.html(this.template());
+    this.$("#filter-field").append(this.filterView.$el);
+    this.$("#customers-table").append(this.tableView.render().$el);
   	return this;
   },
 

@@ -1,12 +1,14 @@
 Shopkick.Views.ProductsIndex = Backbone.View.extend({
 
 	initialize: function() {
-    this.filterView = new Shopkick.Views.TableFilter({
+    this.filterView = new Shopkick.Views.FilterInput({
       collection: Shopkick.Products
     });
 
-    this.tableView = new Shopkick.Views.ProductsTable({
-      filteredView: this.filterView
+    this.tableView = new Shopkick.Views.FilterTable({
+      filteredView: this.filterView,
+      template: JST['products/table'],
+      key: "products"
     });
 	},
 

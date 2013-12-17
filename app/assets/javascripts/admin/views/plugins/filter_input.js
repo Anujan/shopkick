@@ -1,4 +1,4 @@
-Shopkick.Views.TableFilter = Backbone.View.extend({
+Shopkick.Views.FilterInput = Backbone.View.extend({
   initialize: function(options) {
     this.collection = options.collection;
 		this.listenTo(this.collection, "add", this.render);
@@ -44,6 +44,9 @@ Shopkick.Views.TableFilter = Backbone.View.extend({
     var pattern = new RegExp(query, "gi");
     var searchAttrs = _.clone(this.searchAttributes);
     var attrs = _.map(searchAttrs, function(searchAttr) {
+      if (_.isFunction(model[searchAttr])) {
+        return model[searchAttr]();
+      }
       return model.get(searchAttr);
     });
     return _(attrs).any(function(attribute) {

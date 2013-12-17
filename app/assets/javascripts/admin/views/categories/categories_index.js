@@ -1,9 +1,15 @@
 Shopkick.Views.CategoriesIndex = Backbone.View.extend({
 
 	initialize: function() {
-		this.listenTo(Shopkick.Categories, "remove", this.render);
-		this.listenTo(Shopkick.Categories, "add", this.render);
-		this.listenTo(Shopkick.Categories, "change", this.render);
+    this.filterView = new Shopkick.Views.FilterInput({
+      collection: Shopkick.Categories
+    });
+
+    this.tableView = new Shopkick.Views.FilterTable({
+      filteredView: this.filterView,
+      template: JST['categories/table'],
+      key: "categories"
+    });
 	},
 
   template: JST['categories/index'],
@@ -13,11 +19,9 @@ Shopkick.Views.CategoriesIndex = Backbone.View.extend({
   },
 
   render: function() {
- 		this.$el.html(this.template(
- 			{
- 				categories: Shopkick.Categories
- 			}
- 		));
+ 		this.$el.html(this.template());
+    this.$("#filter-field").append(this.filterView.$el);
+    this.$("#categories-table").append(this.tableView.render().$el);
   	return this;
   },
 

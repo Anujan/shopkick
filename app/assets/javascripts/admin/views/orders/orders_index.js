@@ -1,23 +1,28 @@
 Shopkick.Views.OrdersIndex = Backbone.View.extend({
 
 	initialize: function() {
-		this.listenTo(Shopkick.Orders, "remove", this.render);
-		this.listenTo(Shopkick.Orders, "add", this.render);
-		this.listenTo(Shopkick.Orders, "change", this.render);
+    this.filterView = new Shopkick.Views.FilterInput({
+      collection: Shopkick.Orders,
+      searchAttributes: ["id", "customer_name", "payment_status", "fulfillment_status"]
+    });
+
+    this.tableView = new Shopkick.Views.FilterTable({
+      filteredView: this.filterView,
+      template: JST['orders/table'],
+      key: "orders"
+    });
 	},
 
   template: JST['orders/index'],
-  
+
   events: {
   	"click #delete" : "deleteOrder"
   },
-  
+
   render: function() {
- 		this.$el.html(this.template(
- 			{
- 				orders: Shopkick.Orders
- 			}
- 		));
+ 		this.$el.html(this.template());
+    this.$("#filter-field").append(this.filterView.$el);
+    this.$("#orders-table").append(this.tableView.render().$el);
   	return this;
   },
 

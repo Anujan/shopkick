@@ -1,0 +1,21 @@
+<tr>
+  <th>Title</th>
+  <th>Edit</th>
+</tr>
+<% categories.each(function(category) { %>
+  <tr>
+    <td>
+      <a href="#categories/<%= category.id %>">
+        <%= category.escape('title') %>
+      </a>
+    </td>
+    <td class="button-group">
+      <a class="btn" id="edit" href="#categories/<%= category.id %>/edit">Edit</a>
+  	</td>
+    <td class="button-group">
+    	<a class="cancel_btn" id="delete" href="#categories" data-id=<%= category.id %>>
+	 		Delete
+    	</a>
+    </td>
+  </tr>
+<% }) %>

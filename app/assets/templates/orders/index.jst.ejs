@@ -1,29 +1,4 @@
 <h1>Orders</h1>
-<table border="0" cellspacing="5" cellpadding="5">
-  <tr>
-    <th>Order ID</th>
-    <th>Customer Name</th>
-    <th>Payment Status</th>
-    <th>Fullfilment Status</th>
-    <th>Total Price</th>
-    <th></th>
-  </tr>
-  <% orders.each(function(order) { %>
-    <tr>
-      <td><a href="#orders/<%= order.id %>"><%= order.id %></a></td>
-      <td>
-        <%= order.get("customer").full_name() %>
-      </td>
-      <td><%= order.escape("payment_status") %></td>
-      <td><%= order.escape("fulfillment_status") %></td>
-      <td><%= NumberHelpers.number_to_currency(order.escape("price")) %></td>
-      <td class="button-group">
-        <a class="btn" id="edit" href="#orders/<%= order.id %>/edit">Edit</a>
-      	<a class="cancel_btn" id="delete" href="#orders" data-id=<%= order.id %>>
-		 		Delete
-      	</a>
-    	</td>
-    </tr>
-  <% }) %>
-</table>
+<div id="filter-field"></div>
+<div id="orders-table"></div>
 <a href="#orders/new">New Order</a>
