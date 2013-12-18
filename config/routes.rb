@@ -7,6 +7,7 @@ Shopkick::Application.routes.draw do
       resources :products
       resources :categories
       resources :promotions
+      resource :settings, only: [:show, :edit, :update]
     end
     scope module: 'store' do
       root to: 'Main#index'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131217224905) do
+ActiveRecord::Schema.define(:version => 20131218225014) do
 
   create_table "cart_products", :force => true do |t|
     t.integer  "product_id"
@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(:version => 20131217224905) do
     t.string   "address_state"
     t.string   "address_postal_code"
     t.string   "address_city"
+    t.string   "phone_number"
   end
 
   create_table "promotions", :force => true do |t|

@@ -1,4 +1,4 @@
-<h1 id="logo"><%= current_store.name %></h1>
+<h1 id="logo"><%= Profile.first.store_name || current_store.name %></h1>
 <nav class="store-top-nav group">
   <ul class="group">
     <li><%= link_to 'Home', root_url, remote: true, "data-type" => :html %></li>

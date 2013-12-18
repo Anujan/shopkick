@@ -1,0 +1,6 @@
+<form action="<%= admin_settings_url %>" method="POST">
+  <label for="store_name">Store Name</label><input type="text" name="store_name" value="<%= @profile.store_name %>" id="store_name">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" id="authenticity_token">
+  <input type="hidden" name="_method" value="PUT" id="_method">
+  <%= render partial: 'shared/address_form', locals: { model: @profile, key: 'profile' } %>
+</form>

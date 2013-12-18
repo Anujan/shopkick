@@ -13,6 +13,7 @@ window.Shopkick = {
     Shopkick.customersCollection = new Shopkick.Collections.Customers();
     Shopkick.ordersCollection = new Shopkick.Collections.Orders();
     Shopkick.dataSeries = new Shopkick.Collections.DataSeries();
+    Shopkick.profile = new Shopkick.Models.Profile();
     new Shopkick.Routers.Orders();
     new Shopkick.Routers.Customers();
     new Shopkick.Routers.Products();

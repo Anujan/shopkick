@@ -1,0 +1,8 @@
+<% if (updated) { %>
+<div class="notice">Your profile has been updated at <%= new Date().toLocaleTimeString() %>!</div>
+<% } %>
+<label for="store_name">Store Name</label><input type="text" name="profile[store_name]" value="<%= profile.get('store_name') %>" id="store_name">
+<%= JST['shared/address_form']({ model: profile, key: 'profile' }) %>
+<div class="button-group">
+<input type="submit" class="btn">
+</div>

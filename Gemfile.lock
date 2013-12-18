@@ -58,8 +58,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
-    d3-rails (3.3.7)
-      railties (>= 3.1)
     daemons (1.1.9)
     debug_inspector (0.0.2)
     domain_name (0.5.15)
@@ -198,7 +196,6 @@ DEPENDENCIES
   binding_of_caller
   bullet
   coffee-rails (~> 3.2.1)
-  d3-rails
   figaro
   fog
   friendly_id
