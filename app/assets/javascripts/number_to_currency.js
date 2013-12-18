@@ -84,6 +84,10 @@
       return "" + _country_code + first + _delimiter + last + _extension;
     };
 
+    NumberHelpers.currency_to_number = function (currency) {
+      return Number(currency.replace(/[^0-9\.]+/g,""));
+    };
+
     return NumberHelpers;
 
   })();

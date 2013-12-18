@@ -18,12 +18,16 @@ $(document).ready(function() {
     $a = $(this)[0];
     if ($a.className == 'remove-cart-item') {
       var tr = $(this).closest("tr");
-      var itemPrice = tr.find(".price").text().trim().slice(1);
+      var itemPrice = NumberHelpers.currency_to_number(tr.find(".price").text());
       tr.remove();
-      var price = $(".summary .price .total").text().trim().slice(1);
+      var price = NumberHelpers.currency_to_number($(".summary .price .total").text());
       var newPrice = price - itemPrice;
-      console.log(itemPrice, price, newPrice);
-      $(".summary .price .total").text("$" + newPrice);
+      if (newPrice > 0) {
+        $(".summary .price .total strong").text(NumberHelpers.number_to_currency(newPrice));
+      } else {
+        $("table").remove();
+        $("#cart").html("<h1>Your cart is empty...</h1>");
+      }
     }
   });
 });
