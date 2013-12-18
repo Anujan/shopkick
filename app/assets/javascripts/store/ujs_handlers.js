@@ -19,9 +19,10 @@ $(document).ready(function() {
     if ($a.className == 'remove-cart-item') {
       var tr = $(this).closest("tr");
       var itemPrice = NumberHelpers.currency_to_number(tr.find(".price").text());
+      var itemQty = tr.find('.qty input').val();
       tr.remove();
       var price = NumberHelpers.currency_to_number($(".summary .price .total").text());
-      var newPrice = price - itemPrice;
+      var newPrice = price - (itemPrice * itemQty);
       if (newPrice > 0) {
         $(".summary .price .total strong").text(NumberHelpers.number_to_currency(newPrice));
       } else {
