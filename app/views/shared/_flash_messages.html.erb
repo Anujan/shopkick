@@ -1,15 +1,17 @@
-<% flash.each do |key, value| %>
-<div class="alert <%= key %>">
-  <p><strong class="<%= key %>">
-    <%= key.capitalize %>!
-  </strong>
-  <% if value.kind_of?(Enumerable) %>
-    <% value.each do |val| %>
-      <%= val %>
+<div id="alerts">
+  <% flash.each do |key, value| %>
+  <div class="alert <%= key %>">
+    <p><strong class="<%= key %>">
+      <%= key.capitalize %>!
+    </strong>
+    <% if value.kind_of?(Enumerable) %>
+      <% value.each do |val| %>
+        <%= val %>
+      <% end %>
+    <% else %>
+      <%= value %>
     <% end %>
-  <% else %>
-    <%= value %>
+    </p>
+  </div>
   <% end %>
-  </p>
 </div>
-<% end %>

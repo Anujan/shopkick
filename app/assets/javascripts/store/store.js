@@ -1,1 +1,1 @@
-//= require products
+//= require_tree .

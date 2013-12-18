@@ -1,5 +1,10 @@
 class Store::CartsController < Store::BaseController
   def show
+    if request.xhr?
+      render :show, layout: false
+    else
+      render :show
+    end
   end
 
   def update

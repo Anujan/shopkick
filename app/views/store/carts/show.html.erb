@@ -19,18 +19,18 @@
             <tr>
               <td class="image">
                 <div class="product_image">
-                  <%= link_to image_tag(product.images.first.photo.url(:thumb)).html_safe, product_url(product) %>
+                  <%= link_to image_tag(product.images.first.photo.url(:thumb)).html_safe, product_url(product), remote: true, "data-type" => "html" %>
                 </div>
               </td>
               <td class="item">
-                <%= link_to "<strong>#{product.title}<strong>".html_safe, product_url(product) %>
+                <%= link_to "<strong>#{product.title}<strong>".html_safe, product_url(product), remote: true, "data-type" => "html" %>
               </td>
               <td class="qty">
                 <input type="text" size="4" name="updates[<%= cart_product.id %>]" value="<%= cart_product.quantity %>">
               </td>
               <td class="price"><%= number_to_currency(product.price) %></td>
               <td class="remove">
-                <%= link_to "Remove", cart_product_url(product), method: :delete %>          </td>
+                <%= link_to "Remove", cart_product_url(product), method: :delete, data: { type: :json }, remote: true, class: "remove-cart-item" %>          </td>
             </tr>
           <% end %>
             <tr class="summary">

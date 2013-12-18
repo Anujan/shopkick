@@ -1,7 +1,9 @@
 <%= render partial: 'store/shared/top_nav' %>
 <section class="store-content group">
   <%= render partial: 'shared/flash_messages' %>
-  <%= yield %>
+  <div id="main-content">
+    <%= yield %>
+  </div>
 </section>
 <% content_for(:admin_js) do %>
 	<%= javascript_include_tag "store/store" %>

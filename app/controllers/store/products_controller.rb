@@ -4,13 +4,22 @@ class Store::ProductsController < Store::BaseController
   def index
     @products = Product.where(visible: true).page(params[:page]).per(16)
     if request.xhr?
-      render partial: "product_list", locals: { products: @products }
+      if params[:infinite]
+        render partial: "product_list", locals: { products: @products }
+      else
+        render :index, layout: false
+      end
     else
       render :index
     end
   end
 
   def show
+    if request.xhr?
+      render :show, layout: false
+    else
+      render :show
+    end
   end
 
   def update
@@ -21,7 +30,12 @@ class Store::ProductsController < Store::BaseController
       products.first.add_quantity
     end
     flash[:notice] = "Your cart has been updated!"
-    redirect_to :back
+    unless request.xhr?
+      redirect_to :back
+    else
+      render json: flash
+      flash.clear
+    end
   end
 
   def destroy
@@ -30,7 +44,12 @@ class Store::ProductsController < Store::BaseController
       flash[:notice] = "#{order_product.first.title} has been removed from your cart."
       order_product.first.destroy
     end
-    redirect_to cart_path
+    unless request.xhr?
+      redirect_to cart_path
+    else
+      render json: flash
+      flash.clear
+    end
   end
 
   def current_product
