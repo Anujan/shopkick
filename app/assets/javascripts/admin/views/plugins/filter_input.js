@@ -1,9 +1,9 @@
 Shopkick.Views.FilterInput = Backbone.View.extend({
   initialize: function(options) {
     this.collection = options.collection;
-		this.listenTo(this.collection, "add", this.render);
-    this.listenTo(this.collection, "change", this.render);
-    this.listenTo(this.collection, "remove", this.render);
+		this.listenTo(this.collection, "add", this.filter);
+    this.listenTo(this.collection, "change", this.filter);
+    this.listenTo(this.collection, "remove", this.filter);
     this.searchAttributes = options.searchAttributes || ["title"];
   },
 

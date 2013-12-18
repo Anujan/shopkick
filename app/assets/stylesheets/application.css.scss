@@ -293,6 +293,10 @@ div#cart {
   width: 50%;
 }
 
+.btn:hover {
+  color: #CCC !important;
+}
+
 .alert {
   border: 4px solid white;
   &.notice {

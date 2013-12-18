@@ -31,6 +31,6 @@ Shopkick.Views.ProductsIndex = Backbone.View.extend({
   	$a = $(event.currentTarget);
   	var productId = $a.data("id");
   	var product = Shopkick.Products.get(productId);
-  	product.destroy();
+    product.destroy();
   }
 });
