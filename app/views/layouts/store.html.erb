@@ -5,6 +5,7 @@
     <%= yield %>
   </div>
 </section>
+<%= render partial: 'store/shared/footer' %>
 <% content_for(:admin_js) do %>
 	<%= javascript_include_tag "store/store" %>
 <% end %>

@@ -21,7 +21,11 @@ class Store::CartsController < Store::BaseController
 	  		flash.now[:error] = cp.errors.full_messages if cp.invalid?
 	  	end
   	end
-  	render :show
+    if request.xhr?
+      render :show, layout: false
+    else
+    	render :show
+    end
   end
 
   def load_cart
