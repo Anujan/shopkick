@@ -1,6 +1,7 @@
 $(document).ready(function() {
   $(document).on("ajax:complete", 'a[data-type=html]', function(event, data, status) {
     $("#main-content").html(data.responseText);
+    updateURL(event.target.href);
     movePage();
     var $div = $("#alerts");
     $div.empty();
@@ -29,4 +30,10 @@ $(document).ready(function() {
 
 String.prototype.capitalize = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
+function updateURL(url) {
+  if (history && history.pushState) {
+    history.pushState(null, document.title, url);
+  }
 }
