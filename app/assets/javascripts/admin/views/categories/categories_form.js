@@ -25,7 +25,7 @@ Shopkick.Views.CategoriesForm = Backbone.View.extend({
     model.save(json, {
       success: function() {
         Shopkick.Categories.add(model, { at: 0 });
-        Shopkick.CategoriesRouter.navigate("/categories", { trigger: true });
+        Backbone.History.navigate("/categories", { trigger: true });
       },
       error: function(model, xhr, options) {
         self.validation_errors = xhr.responseJSON;

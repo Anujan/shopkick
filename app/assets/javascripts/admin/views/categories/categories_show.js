@@ -15,6 +15,6 @@ Shopkick.Views.CategoriesShow = Backbone.View.extend({
 
   deleteCustomer: function(event) {
   	this.model.destroy();
-    Shopkick.CustomersRouter.navigate("categories", { trigger: true });
+    Backbone.History.navigate("categories", { trigger: true });
   }
 });

@@ -25,7 +25,7 @@ Shopkick.Views.CustomersForm = Backbone.View.extend({
     model.save(json, {
       success: function() {
         Shopkick.Customers.add(model, { at: 0 });
-        Shopkick.CustomersRouter.navigate("/customers", { trigger: true });
+        Backbone.History.navigate("/customers", { trigger: true });
       },
       error: function(model, xhr, options) {
         self.validation_errors = xhr.responseJSON;

@@ -31,7 +31,7 @@ Shopkick.Views.ProductsForm = Backbone.View.extend({
     model.save(json, {
       success: function() {
         Shopkick.Products.add(model, { at: 0 });
-        Shopkick.ProductsRouter.navigate("/products", { trigger: true });
+        Backbone.History.navigate("/products", { trigger: true });
       },
       error: function(model, xhr, options) {
         self.validation_errors = xhr.responseJSON;

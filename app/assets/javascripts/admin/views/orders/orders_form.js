@@ -30,7 +30,7 @@ Shopkick.Views.OrdersForm = Backbone.View.extend({
     model.save(json, {
       success: function() {
         Shopkick.Orders.add(model, { at: 0 });
-        Shopkick.OrdersRouter.navigate("/orders", { trigger: true });
+        Backbone.History.navigate("/orders", { trigger: true });
       },
       error: function(model, xhr, options) {
         self.validation_errors = xhr.responseJSON;

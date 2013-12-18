@@ -12,10 +12,10 @@ window.Shopkick = {
     Shopkick.Products = new Shopkick.Collections.Products();
     Shopkick.Customers = new Shopkick.Collections.Customers();
     Shopkick.Orders = new Shopkick.Collections.Orders();
-    Shopkick.OrdersRouter = new Shopkick.Routers.Orders();
-    Shopkick.CustomersRouter = new Shopkick.Routers.Customers();
-    Shopkick.ProductsRouter = new Shopkick.Routers.Products();
-    Shopkick.CategoriesRouter = new Shopkick.Routers.Categories();
+    new Shopkick.Routers.Orders();
+    new Shopkick.Routers.Customers();
+    new Shopkick.Routers.Products();
+    new Shopkick.Routers.Categories();
     Backbone.history.start();
   }
 };

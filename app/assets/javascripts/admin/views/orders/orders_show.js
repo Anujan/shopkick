@@ -16,6 +16,6 @@ Shopkick.Views.OrdersShow = Backbone.View.extend({
 
   deleteOrder: function(event) {
   	this.model.destroy();
-    Shopkick.OrdersRouter.navigate("orders", { trigger: true });
+    Backbone.History.navigate("orders", { trigger: true });
   }
 });
