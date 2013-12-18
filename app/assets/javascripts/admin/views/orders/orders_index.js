@@ -2,7 +2,7 @@ Shopkick.Views.OrdersIndex = Backbone.View.extend({
 
 	initialize: function() {
     this.filterView = new Shopkick.Views.FilterInput({
-      collection: Shopkick.Orders,
+      collection: Shopkick.ordersCollection,
       searchAttributes: ["id", "customer_name", "payment_status", "fulfillment_status"]
     });
 
@@ -29,7 +29,7 @@ Shopkick.Views.OrdersIndex = Backbone.View.extend({
   deleteOrder: function(event) {
   	$a = $(event.currentTarget);
   	var orderId = $a.data("id");
-  	var order = Shopkick.Orders.get(orderId);
+  	var order = Shopkick.ordersCollection.get(orderId);
   	order.destroy();
   }
 });

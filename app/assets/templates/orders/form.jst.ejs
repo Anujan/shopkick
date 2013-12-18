@@ -6,7 +6,7 @@
 <div class="form-group">
   <label for="customer">Customer</label>
   <select name="order[customer_id]" id="customer">
-    <% Shopkick.Customers.each(function(customer) {  %>
+    <% Shopkick.customersCollection.each(function(customer) {  %>
       <option value="<%= customer.id %>"><%= customer.full_name() %></option>
     <% }) %>
   </select>
@@ -43,7 +43,7 @@
 <div class="form-group">
   <label for="products">Products</label>
   <select name="order[product_ids][]" id="order[product_ids]" multiple>
-    <% Shopkick.Products.each(function(product) { %>
+    <% Shopkick.productsCollection.each(function(product) { %>
         <option value="<%= product.id %>"
         <% if (order.get('products') && order.get('products').get(product)) { print("selected") } %>
         ><%= product.escape('title') %></option>

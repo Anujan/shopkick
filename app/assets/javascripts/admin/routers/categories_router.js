@@ -9,7 +9,7 @@ Shopkick.Routers.Categories = Backbone.Router.extend({
   fetched: false,
 
   collection: function() {
-      return Shopkick.Categories;
+      return Shopkick.categoriesCollection;
   },
 
 	index: function() {

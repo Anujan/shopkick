@@ -2,7 +2,7 @@ Shopkick.Views.CategoriesIndex = Backbone.View.extend({
 
 	initialize: function() {
     this.filterView = new Shopkick.Views.FilterInput({
-      collection: Shopkick.Categories
+      collection: Shopkick.categoriesCollection
     });
 
     this.tableView = new Shopkick.Views.FilterTable({
@@ -28,7 +28,7 @@ Shopkick.Views.CategoriesIndex = Backbone.View.extend({
   deleteCategory: function(event) {
   	$a = $(event.currentTarget);
   	var categoryId = $a.data("id");
-  	var category = Shopkick.Categories.get(categoryId);
+  	var category = Shopkick.categoriesCollection.get(categoryId);
   	category.destroy();
   }
 });

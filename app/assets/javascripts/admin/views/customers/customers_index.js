@@ -2,7 +2,7 @@ Shopkick.Views.CustomersIndex = Backbone.View.extend({
 
 	initialize: function() {
     this.filterView = new Shopkick.Views.FilterInput({
-      collection: Shopkick.Customers,
+      collection: Shopkick.customersCollection,
       searchAttributes: ["full_name"]
     });
 
@@ -29,7 +29,7 @@ Shopkick.Views.CustomersIndex = Backbone.View.extend({
   deleteCustomer: function(event) {
   	$a = $(event.currentTarget);
   	var customerId = $a.data("id");
-  	var customer = Shopkick.Customers.get(customerId);
+  	var customer = Shopkick.customersCollection.get(customerId);
   	customer.destroy();
   }
 });

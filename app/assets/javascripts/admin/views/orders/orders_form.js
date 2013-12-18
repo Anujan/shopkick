@@ -1,7 +1,7 @@
 Shopkick.Views.OrdersForm = Backbone.View.extend({
   initialize: function() {
-    this.listenTo(Shopkick.Products, "add", this.render);
-    this.listenTo(Shopkick.Customers, "add", this.render);
+    this.listenTo(Shopkick.productsCollection, "add", this.render);
+    this.listenTo(Shopkick.customersCollection, "add", this.render);
   },
 
   validation_errors: [],
@@ -29,8 +29,8 @@ Shopkick.Views.OrdersForm = Backbone.View.extend({
     var self = this;
     model.save(json, {
       success: function() {
-        Shopkick.Orders.add(model, { at: 0 });
-        Backbone.History.navigate("/orders", { trigger: true });
+        Shopkick.ordersCollection.add(model, { at: 0 });
+        Backbone.history.navigate("/orders", { trigger: true });
       },
       error: function(model, xhr, options) {
         self.validation_errors = xhr.responseJSON;

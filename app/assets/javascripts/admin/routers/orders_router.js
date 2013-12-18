@@ -9,7 +9,7 @@ Shopkick.Routers.Orders = Backbone.Router.extend({
   fetched: false,
 
   collection: function() {
-    return Shopkick.Orders;
+    return Shopkick.ordersCollection;
   },
 
 	index: function() {
@@ -23,7 +23,21 @@ Shopkick.Routers.Orders = Backbone.Router.extend({
 	},
 
 	create: function () {
-    this._swapView(new Shopkick.Views.OrdersNew());
+    var self = this;
+    if (Shopkick.customersCollection.fetched && Shopkick.productsCollection.fetched) {
+      this._swapView(new Shopkick.Views.OrdersNew());
+    } else {
+      if (!Shopkick.customersCollection.fetched) {
+        Shopkick.customersCollection.fetch({ success: function() {
+          self._swapView(new Shopkick.Views.OrdersNew());
+        }});
+      }
+      if (!Shopkick.productsCollection.fetched) {
+        Shopkick.productsCollection.fetch({ success: function() {
+          self._swapView(new Shopkick.Views.OrdersNew());
+        }});
+      }
+    }
 	},
 
   show: function (id) {

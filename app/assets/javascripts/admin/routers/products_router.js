@@ -9,7 +9,7 @@ Shopkick.Routers.Products = Backbone.Router.extend({
   fetched: false,
 
   collection: function() {
-    return Shopkick.Products;
+    return Shopkick.productsCollection;
   },
 
 	index: function() {

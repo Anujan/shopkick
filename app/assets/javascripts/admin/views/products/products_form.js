@@ -30,8 +30,8 @@ Shopkick.Views.ProductsForm = Backbone.View.extend({
     this.$el.html("<h2>Please wait while we add the product...</h2>")
     model.save(json, {
       success: function() {
-        Shopkick.Products.add(model, { at: 0 });
-        Backbone.History.navigate("/products", { trigger: true });
+        Shopkick.productsCollection.add(model, { at: 0 });
+        Backbone.history.navigate("/products", { trigger: true });
       },
       error: function(model, xhr, options) {
         self.validation_errors = xhr.responseJSON;

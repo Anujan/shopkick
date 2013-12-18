@@ -16,6 +16,6 @@ Shopkick.Views.ProductsShow = Backbone.View.extend({
 
   deleteProduct: function(event) {
   	this.model.destroy();
-    Backbone.History.navigate("products", { trigger: true });
+    Backbone.history.navigate("products", { trigger: true });
   }
 });

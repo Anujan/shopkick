@@ -14,7 +14,7 @@
 <div class="form-group">
   <label for="type">Category</label>
   <select name="product[category_id]" id="category">
-    <% Shopkick.Categories.each(function(category) { %>
+    <% Shopkick.categoriesCollection.each(function(category) { %>
       <option value="<%= category.id %>"
         <% if (product.category_id == category.id) { print("selected"); } %>><%= category.get('title') %></option>
     <% }) %>

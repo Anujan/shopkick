@@ -8,10 +8,10 @@ window.Shopkick = {
     Shopkick.$sidenav.html("");
     new Shopkick.Views.SideNavigation().render().$el.appendTo(Shopkick.$sidenav);
     Shopkick.$rootEl = $('#main-content');
-    Shopkick.Categories = new Shopkick.Collections.Categories();
-    Shopkick.Products = new Shopkick.Collections.Products();
-    Shopkick.Customers = new Shopkick.Collections.Customers();
-    Shopkick.Orders = new Shopkick.Collections.Orders();
+    Shopkick.categoriesCollection = new Shopkick.Collections.Categories();
+    Shopkick.productsCollection = new Shopkick.Collections.Products();
+    Shopkick.customersCollection = new Shopkick.Collections.Customers();
+    Shopkick.ordersCollection = new Shopkick.Collections.Orders();
     new Shopkick.Routers.Orders();
     new Shopkick.Routers.Customers();
     new Shopkick.Routers.Products();

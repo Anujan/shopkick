@@ -9,7 +9,7 @@ Shopkick.Routers.Customers = Backbone.Router.extend({
   fetched: false,
 
   collection: function() {
-    return Shopkick.Customers;
+    return Shopkick.customersCollection;
   },
 
 	index: function() {
