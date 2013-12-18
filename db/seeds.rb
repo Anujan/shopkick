@@ -44,3 +44,7 @@ URLS.map do |category, url|
     Product.create!(item) unless item.values.any?(&:blank?)
   end
 end
+
+Customer.create(first_name: 'Anujan', last_name: 'Panchadcharam',
+  street_address: '770 Broadway', street_city: 'New York', street_state: 'New York',
+  street_country: 'USA', street_postal_code: '10003', email_address: 'Anujan714@gmail.com')

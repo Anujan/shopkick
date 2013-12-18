@@ -1,5 +1,7 @@
 Shopkick.Routers.Orders = Backbone.Router.extend({
 	routes: {
+    "" : "dashboard",
+    "dashboard" : "dashboard",
 		"orders": "index",
     "orders/new": "create",
 		"orders/:id/edit": "edit",
