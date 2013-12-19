@@ -1,6 +1,6 @@
 Shopkick.Views.Dashboard = Backbone.View.extend({
   initialize: function() {
-    this.listenTo(Shopkick.dataSeries, 'sync', this.order_day_chart);
+    this.listenTo(Shopkick.dataSeries, 'add', this.order_day_chart);
   },
 
   template: JST['dashboard/index'],

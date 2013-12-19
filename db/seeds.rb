@@ -47,4 +47,5 @@ end
 
 Customer.create(first_name: 'Anujan', last_name: 'Panchadcharam',
   street_address: '770 Broadway', street_city: 'New York', street_state: 'New York',
-  street_country: 'USA', street_postal_code: '10003', email_address: 'Anujan714@gmail.com')
+  street_country: 'USA', street_postal_code: '10003', email_address: 'Anujan714@gmail.com',
+  phone_number: "+19173328921")

@@ -19,6 +19,13 @@ Shopkick.Views.OrdersForm = Backbone.View.extend({
       order: this.model,
       errors: this.validation_errors
     }));
+
+    this.$('select').chosen({
+      allow_single_deselect: true,
+      no_results_text: 'No results matched',
+      width: '200px'
+    });
+
     return this;
   },
 

@@ -38,6 +38,7 @@ gem 'apartment'
 gem 'kaminari'
 
 gem 'jquery-rails'
+gem 'chosen-rails'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 

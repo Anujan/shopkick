@@ -52,6 +52,12 @@ GEM
       uniform_notifier
     celluloid (0.15.2)
       timers (~> 1.1.0)
+    chosen-rails (1.0.2)
+      coffee-rails (>= 3.2)
+      compass-rails (>= 1.1.2)
+      railties (>= 3.0)
+      sass-rails (>= 3.2)
+    chunky_png (1.2.9)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.3)
@@ -64,6 +70,12 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    compass (0.12.2)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    compass-rails (1.1.2)
+      compass (>= 0.12.2)
     connection_pool (1.2.0)
     debug_inspector (0.0.2)
     delayed_paperclip (2.6.1)
@@ -95,6 +107,7 @@ GEM
     formatador (0.2.4)
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
+    fssm (0.2.10)
     hike (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -241,6 +254,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bullet
+  chosen-rails
   coffee-rails (~> 3.2.1)
   delayed_paperclip
   figaro
