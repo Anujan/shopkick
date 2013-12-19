@@ -2,7 +2,7 @@ class Store::ProductsController < Store::BaseController
   before_filter :current_product, only: [:show]
 
   def index
-    @products = Product.where(visible: true).page(params[:page]).per(16)
+    @products = Product.where(visible: true).includes(:images).page(params[:page]).per(16)
     if request.xhr?
       if params[:infinite]
         render partial: "product_list", locals: { products: @products }

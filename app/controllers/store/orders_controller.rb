@@ -20,11 +20,12 @@ class Store::OrdersController < Store::BaseController
       :email => params[:stripeEmail],
       :card  => params[:stripeToken]
     )
-    customer[:stripe_id] = stripe_customer.id
 
     @customer = Customer.find_or_create(customer)
 
-    if @customer.valid?
+    @customer.stripe_id = stripe_customer.id
+
+    if @customer.save
       @order = Order.from_cart(@cart, @customer)
       if @order.valid?
         @order.charge!

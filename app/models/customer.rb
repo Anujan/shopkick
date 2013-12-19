@@ -13,7 +13,7 @@ class Customer < ActiveRecord::Base
   end
 
   def self.find_or_create(values)
-    search_by = [:first_name, :last_name, :stripe_id]
+    search_by = [:first_name, :last_name, :address_street]
     where_values = {}.tap do |search|
       search_by.each do |key|
         search[key] = values[key]
@@ -25,6 +25,6 @@ class Customer < ActiveRecord::Base
 
     return customer if customer
 
-    self.create(values)
+    Customer.new(values)
   end
 end
