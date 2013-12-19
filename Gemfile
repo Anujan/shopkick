@@ -28,7 +28,8 @@ gem "figaro"
 gem 'friendly_id'
 
 gem 'sidekiq'
-gem 'oj'
+gem 'sinatra', require: false
+gem 'slim'
 gem 'apartment-sidekiq'
 gem 'delayed_paperclip'
 
