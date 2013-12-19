@@ -2,7 +2,7 @@ class SettingsController < ApplicationController
   respond_to :json, :html
 
   def show
-    respond_with(@profile = Profile.first)
+    render json: Profile.first
   end
 
   def edit

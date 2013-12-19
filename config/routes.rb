@@ -1,4 +1,7 @@
+require 'sidekiq/web'
+
 Shopkick::Application.routes.draw do
+  mount Sidekiq::Web, at: "/sidekiq"
   constraints(lambda { |r| r.subdomain.present? && r.subdomain != 'www' }) do
     namespace :admin do
       root to: 'Dashboard#index'
