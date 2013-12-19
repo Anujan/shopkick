@@ -30,7 +30,7 @@ class Store::OrdersController < Store::BaseController
       if @order.valid?
         @order.save
         @cart.destroy
-        OrderWorker.perform_async(current_store.email, @order.id, Profile.first.phone_number)
+        OrderWorker.perform_async(current_store.email, @order.id, Profile.first.phone_number || "")
         render :create
       else
         flash[:error] = @order.errors.full_messages
