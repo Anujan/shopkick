@@ -14,6 +14,28 @@ class Order < ActiveRecord::Base
   has_many :order_promotions
   has_one :promotions, through: :order_promotions, source: :promotion
 
+  def self.from_cart(cart, customer)
+    order = Order.new
+    order.customer = customer
+    cart.cart_products.each do |cart_product|
+      order.order_products.new(product_id: cart_product.product_id, quantity: cart_product.quantity)
+    end
+    order.payment_status = 'Pending'
+    order.price = cart.total_price
+
+    order
+  end
+
+  def charge!
+    charge = Stripe::Charge.create(
+      :customer    => self.customer.stripe_id,
+      :amount      => (self.price * 100).to_i,
+      :description => self.products.pluck(:title).join(", "),
+      :currency    => 'usd'
+    )
+    self.payment_status = 'Paid'
+  end
+
   def as_json(options)
     options.merge!(include: [:customer,
       products: {

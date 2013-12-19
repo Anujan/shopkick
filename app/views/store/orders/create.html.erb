@@ -1,0 +1,16 @@
+<div id="cart">
+  <h2>Thanks, you paid <strong><%= @order.price %></strong>!</h2>
+  <p>An email has been sent to you with your order details</p>
+
+  <article>
+    <h2>Products</h2>
+    <% @cart.cart_products.each do |cart_product| %>
+      <p class="product-name">
+        <%= cart_product.quantity %> &times; <%= cart_product.product.title %>
+      </p>
+    <% end %>
+
+    <h2>Shipping Address</h2>
+    <%= render partial: "shared/address", locals: { model: @customer } %>
+  </article>
+</div>

@@ -16,6 +16,7 @@ Shopkick::Application.routes.draw do
         resources :products, only: [:create, :destroy, :update]
       end
       resources :categories, only: [:show]
+      resources :orders, only: [:new, :create, :show]
     end
   end
 

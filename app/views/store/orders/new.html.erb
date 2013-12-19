@@ -1,0 +1,24 @@
+<div id="cart">
+  <article>
+    <% @cart.cart_products.each do |cart_product| %>
+      <span class="product-name">
+        <%= cart_product.quantity %> &times; <%= cart_product.product.title %>
+      </span>
+    <% end %>
+    <span class="total-price">
+      Amount: <%= number_to_currency(@cart.total_price) %>
+    </span>
+  </article>
+  <form action="<%= orders_url %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" id="authenticity_token">
+    <div class="form-group">
+      <label for="phone_number">Phone Number</label><input type="text" name="customer[phone_number]" value="<%= @customer.phone_number %>" id="phone_number"><span>Optional</span>
+    </div>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+        data-description="<%= @cart.products.pluck(:title).join(", ") %>"
+        data-amount="<%= (@cart.total_price * 100).to_i %>"
+        data-shippingAddress="true"
+    ></script>
+  </form>
+</div>
