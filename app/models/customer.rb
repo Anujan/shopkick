@@ -6,7 +6,7 @@ class Customer < ActiveRecord::Base
   validates :address_city, :address_country, :address_postal_code, :address_state,
     :address_street, :email_address, :first_name, :last_name, presence: true
 
-  has_many :orders, inverse_of: :customer
+  has_many :orders, inverse_of: :customer, dependent: :destroy
 
   def full_name
     "#{first_name} #{last_name}"

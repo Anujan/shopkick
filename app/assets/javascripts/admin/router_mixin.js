@@ -13,10 +13,14 @@ _.extend(Backbone.Router.prototype, {
       var self = this;
       this.collection().fetch({
         success: function () {
+          self.nextUpdate = Date.now() + 120000; //2 minutes
           self.fetched = true;
           swap.call(self);
         }
       });
+    } else if (this.nextUpdate && Date.now() > this.nextUpdate) {
+      this.collection().fetch();
+      swap.call(this);
     } else {
       swap.call(this);
     }
