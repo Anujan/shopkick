@@ -28,9 +28,11 @@ class Store::OrdersController < Store::BaseController
     if @customer.save
       @order = Order.from_cart(@cart, @customer)
       if @order.valid?
-        @order.charge!
         @order.save
+        @order.charge!
         @cart.destroy
+        OrderMailer.delay.payment_recieved(current_store, @order)
+        OrderMailer.delay.order_confirmation(@order)
         render :create
       else
         flash[:error] = @order.errors.full_messages

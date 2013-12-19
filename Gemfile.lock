@@ -28,6 +28,7 @@ GEM
     activesupport (3.2.13)
       i18n (= 0.6.1)
       multi_json (~> 1.0)
+    addressable (2.3.5)
     apartment (0.22.1)
       activerecord (>= 3.1.2)
       rack (>= 1.3.6)
@@ -60,6 +61,13 @@ GEM
     coffee-script-source (1.6.3)
     daemons (1.1.9)
     debug_inspector (0.0.2)
+    delayed_job (4.0.0)
+      activesupport (>= 3.0, < 4.1)
+    delayed_job_active_record (4.0.0)
+      activerecord (>= 3.0, < 4.1)
+      delayed_job (>= 3.0, < 4.1)
+    delayed_paperclip (2.6.1)
+      paperclip (>= 3.3.0)
     domain_name (0.5.15)
       unf (>= 0.0.5, < 1.0.0)
     eco (1.0.0)
@@ -72,6 +80,7 @@ GEM
     eventmachine (1.0.3)
     excon (0.13.4)
     execjs (2.0.2)
+    fattr (2.2.1)
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
@@ -88,6 +97,8 @@ GEM
     formatador (0.2.4)
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
+    heroku-api (0.2.1)
+      excon (~> 0.13.3)
     hike (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -100,6 +111,10 @@ GEM
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    launchy (2.4.2)
+      addressable (~> 2.3)
+    letter_opener (1.2.0)
+      launchy (~> 2.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -158,11 +173,15 @@ GEM
     rest-client (1.6.7)
       mime-types (>= 1.16)
     ruby-hmac (0.4.0)
+    rush (0.6.8)
+      session
     sass (3.2.12)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    session (3.1.0)
+      fattr
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -190,6 +209,11 @@ GEM
     unf_ext (0.0.6)
     uniform_notifier (1.3.0)
     webrobots (0.1.1)
+    workless (1.1.3)
+      delayed_job (>= 2.0.7)
+      heroku-api
+      rails
+      rush
 
 PLATFORMS
   ruby
@@ -202,11 +226,14 @@ DEPENDENCIES
   binding_of_caller
   bullet
   coffee-rails (~> 3.2.1)
+  delayed_job_active_record
+  delayed_paperclip
   figaro
   fog
   friendly_id
   jquery-rails
   kaminari
+  letter_opener
   mechanize
   paperclip
   pg
@@ -216,3 +243,4 @@ DEPENDENCIES
   stripe
   thin
   uglifier (>= 1.0.3)
+  workless (~> 1.1.3)

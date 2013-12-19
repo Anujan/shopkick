@@ -16,7 +16,6 @@ module StoresHelper
 
   def load_cart(c=Cart)
     cart_id = cookies.signed[:cart_id]
-    puts "Cart ID: #{cart_id}"
     unless cart_id.nil?
       @cart = c.find_by_id(cart_id)
     end

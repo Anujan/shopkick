@@ -14,6 +14,7 @@ group :development do
   gem 'quiet_assets'
   gem 'binding_of_caller'
   gem 'bullet'
+  gem 'letter_opener'
 end
 
 gem 'backbone-on-rails'
@@ -23,6 +24,10 @@ gem "fog"
 
 gem "figaro"
 gem 'friendly_id'
+
+gem 'delayed_job_active_record'
+gem "workless", "~> 1.1.3", group: :production
+gem 'delayed_paperclip'
 
 gem 'apartment'
 

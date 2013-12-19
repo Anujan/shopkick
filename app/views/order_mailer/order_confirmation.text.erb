@@ -1,0 +1,7 @@
+  Thanks, you paid <%= @order.price %>!
+
+  Products
+  <% @order.order_products.each do |order_product| %>
+    <%= order_product.quantity %> &times; <%= order_product.product.title %>
+
+  <% end %>

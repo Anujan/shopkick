@@ -34,7 +34,9 @@ class Order < ActiveRecord::Base
       :currency    => 'usd'
     )
     self.payment_status = 'Paid'
+    self.save
   end
+  handle_asynchronously :charge!
 
   def as_json(options)
     options.merge!(include: [:customer,
