@@ -1,0 +1,3 @@
+:queues:
+  - [paperclip, 7]
+  - [order, 5]
