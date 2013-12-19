@@ -8,6 +8,7 @@ class OrderWorker
 
     client = Twilio::REST::Client.new(ENV['TWILIO_SID'], ENV['TWILIO_AUTH_TOKEN'])
 
+    twilio_number = ENV["TWILIO_PHONE_NUMBER"]
 
     cust_phone = order.customer.phone_number
 
