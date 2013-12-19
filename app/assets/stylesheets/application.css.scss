@@ -57,7 +57,8 @@ ul, li {
 }
 
 header.admin {
-	position: absolute;
+  z-index: 1;
+	position: fixed;
 	top: 0;
 	height: 50px;
 	background-color: black;
@@ -106,8 +107,10 @@ li.has-dropdown:hover ul.nav-dropdown {
 }
 
 nav.admin {
-	position: absolute;
-	top: 0;
+	position: fixed;
+	top: 1;
+  z-index: 1;
+  margin-top: -10px;
 	width: 170px;
 	height: 100%;
 	background: #ecf0f1;
@@ -199,7 +202,7 @@ nav .has-dropdown:hover > ul {
   display: block;
 }
 
-.is-dropdown {
+nav .is-dropdown {
   display: none;
   position: absolute;
   width: 200px;
@@ -217,7 +220,6 @@ nav .has-dropdown:hover > ul {
   > a:first-child {
     border: 0;
   }
-
 }
 
 .store-content {

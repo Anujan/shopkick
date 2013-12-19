@@ -26,7 +26,7 @@ Shopkick.Routers.Orders = Backbone.Router.extend({
 
 	create: function () {
     var self = this;
-    if (Shopkick.customersCollection.fetched && Shopkick.productsCollection.fetched) {
+    if (Shopkick.customersCollection.length && Shopkick.productsCollection.length) {
       this._swapView(new Shopkick.Views.OrdersNew());
     } else {
       if (!Shopkick.customersCollection.fetched) {

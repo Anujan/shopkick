@@ -2,6 +2,7 @@ Shopkick.Views.ProductsNew = Backbone.View.extend({
 
   initialize: function() {
     this.model = new Shopkick.Models.Product();
+    this.listenTo(Shopkick.categoriesCollection, "sync", this.render);
   },
 
   template: JST['products/new'],
