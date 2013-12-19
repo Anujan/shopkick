@@ -17,6 +17,8 @@ group :development do
   gem 'letter_opener'
 end
 
+gem 'twilio-ruby'
+
 gem 'backbone-on-rails'
 
 gem "paperclip"
