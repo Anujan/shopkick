@@ -135,6 +135,7 @@ GEM
     net-ssh (2.7.0)
     nokogiri (1.5.10)
     ntlm-http (0.1.1)
+    oj (2.5.1)
     paperclip (3.5.2)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -240,6 +241,7 @@ DEPENDENCIES
   kaminari
   letter_opener
   mechanize
+  oj
   paperclip
   pg
   quiet_assets

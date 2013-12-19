@@ -38,7 +38,7 @@ class Order < ActiveRecord::Base
   end
 
   def as_json(options)
-    options.merge!(include: [:customer,
+    options = options.merge(include: [:customer,
       products: {
         include: {
           images: {
@@ -46,6 +46,9 @@ class Order < ActiveRecord::Base
         }
       }
     }])
+
+    options = options.to_h if options.respond_to?(:to_h)
+
     super(options)
   end
 end

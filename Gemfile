@@ -28,6 +28,7 @@ gem "figaro"
 gem 'friendly_id'
 
 gem 'sidekiq'
+gem 'oj'
 gem 'apartment-sidekiq'
 gem 'delayed_paperclip'
 
