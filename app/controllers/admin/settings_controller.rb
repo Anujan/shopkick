@@ -1,4 +1,4 @@
-class SettingsController < ApplicationController
+class Admin::SettingsController < ApplicationController
   respond_to :json, :html
 
   def show
