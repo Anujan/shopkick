@@ -25,8 +25,8 @@ gem "fog"
 gem "figaro"
 gem 'friendly_id'
 
-gem 'delayed_job_active_record'
-gem "workless", "~> 1.1.3", group: :production
+gem 'sidekiq'
+gem 'apartment-sidekiq'
 gem 'delayed_paperclip'
 
 gem 'apartment'
@@ -37,7 +37,7 @@ gem 'jquery-rails'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 
-gem 'thin'
+gem 'unicorn'
 
 gem 'mechanize'
 

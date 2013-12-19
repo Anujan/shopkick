@@ -7,11 +7,10 @@ class OrderMailer < ActionMailer::Base
       subject: "Confirmation for Order ##{order.id}" )
   end
 
-  def payment_recieved(store, order)
-    @store = store
+  def payment_recieved(store_email, order)
     @order = order
 
-    mail( to: @store.email,
+    mail( to: store_email,
       subjust: "Payment recieved from #{order.customer.full_name} for Order ##{order.id}" )
   end
 end
