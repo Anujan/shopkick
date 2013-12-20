@@ -14,6 +14,7 @@
  */
 $lightBlue: #1FB4DA;
 $darkBlue: #252F38;
+$hoverBlue: #ADC7D0;
 
 html, body, h1, h2, h3, h4, p, div, section,
 nav, input, textarea, ul, li, a, button, img,
@@ -24,6 +25,10 @@ article, span, form, fieldset {
 	font-family: 'ProximaNovaRegular',"Helvetica Neue",Helvetica,Arial,sans-serif;
 	vertical-align: baseline;
 	text-decoration: none;
+}
+
+input {
+  outline: none;
 }
 
 html, body {
@@ -94,14 +99,15 @@ li.has-dropdown {
 ul.nav-dropdown {
 	position: absolute;
 	display: none;
-	background-color: white;
-	border: 3px solid black;
+  background: $darkBlue;
+  border: 1px solid $hoverBlue;
+  padding:5px;
 	width: 100px;
-  > li:hover {
-    width: inherit;
-    background-color: #34495e;
-    a {
-      color: white;
+  a {
+    color: white;
+    display: block;
+    &:hover {
+      color: $hoverBlue;
     }
   }
 }
@@ -117,14 +123,19 @@ nav.admin {
   margin-top: -10px;
 	width: 170px;
 	height: 100%;
-	background: #ecf0f1;
+	background: $darkBlue;
+  border-top: 1px solid $hoverBlue;
+  color: white;
   h2 {
     padding: 10px 0 0 20px;
   }
-  li {
+  a {
+    display: block;
     padding: 7px 5px 6px 20px;
+    color: inherit;
+    text-align: center;
     &:hover {
-      background: #3498db;
+      background: $lightBlue;
     }
   }
 }
