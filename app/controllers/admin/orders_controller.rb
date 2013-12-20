@@ -3,7 +3,7 @@ class Admin::OrdersController < Admin::BaseController
   respond_to :html, :json
 
   def index
-    respond_with(@orders = Order.includes(products: :images).order('created_at DESC'))
+    respond_with(@orders = Order.includes(products: :images).includes(:customer).order('created_at DESC'))
   end
 
   def new
