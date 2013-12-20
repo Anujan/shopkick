@@ -18,7 +18,6 @@ agent = Mechanize.new
 URLS.map do |category, url|
   cat = Category.create!(title: category)
   page = agent.get(url)
-  results[category] = []
   page.search(".hproduct").each do |product|
     p = product.search('a[rel=product]')
     item = {}
