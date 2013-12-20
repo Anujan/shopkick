@@ -6,12 +6,12 @@ class StoresController < ApplicationController
   def create
     @store = Store.new(params[:store])
     if @store.save
-      flash.now[:success] = "Your store has been created!"
+      flash[:success] = "Your store has been created!"
       log_in!(@store)
       redirect_to admin_root_url(subdomain: @store.name)
     else
-      flash.now[:error] = @store.errors.full_messages
-      render :new
+      flash[:error] = @store.errors.full_messages
+      redirect_to :back
     end
   end
 

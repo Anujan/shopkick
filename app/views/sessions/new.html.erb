@@ -1,13 +1,21 @@
-<form id="login_form" action="<%= sign_in_url %>" method="POST">
-  <label for="email">Email</label><input type="text" name="store[email]" value="" id="email">
-  <br>
-  <label for="password">Password</label><input type="password" name="store[password]" value="" id="password">
-  <br>
-
-  <label for="remember_me">Remember me</label>
-  <input type="checkbox" name="remember_me" id="remember_me">
-  <br>
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="submit" value="Login!">
-</form>
-<%= link_to "Don't have an account?", sign_up_path %>
+<div id="landing-page">
+	<nav class="group">
+		<h1 id="logo">Shopkick</h1>
+	</nav>
+	<%= render partial: 'shared/flash_messages' %>
+	<div id="landing-page-inner">
+		<form id="login-form" action="<%= sign_in_url %>" method="POST">
+		  <input type="text" name="store[email]" value="" id="email" placeholder="Email">	
+		  <input type="password" name="store[password]" value="" id="password" placeholder="Password">
+		  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		  <input type="submit" value="Login!">
+		</form>
+		<%= link_to "View Demo", "#", class: "btn demo-btn" %>
+		<%= link_to "Sign up!", "#", class: "btn sign-up-btn" %>
+		<span class="slogan">Start your online store today!</span>
+	</div>
+</div>
+<footer id="landing-footer" class="group">
+	<a class="copyright left" href="#">&copy; 2013 - 2014 Shopkick.co </a>
+	<a class="hire-me right" href="#">Hire me!</a>
+</footer>

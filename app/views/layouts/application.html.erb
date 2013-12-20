@@ -8,9 +8,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if request.method == 'POST' && ['/sessions', '/stores'].include?(url_for) %>
-    <%= render partial: 'shared/flash_messages' %>
-  <% end %>
   <%= yield %>
 </body>
 </html>

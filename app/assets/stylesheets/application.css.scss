@@ -12,6 +12,8 @@
  *= require_tree .
  *= require chosen
  */
+$lightBlue: #1FB4DA;
+$darkBlue: #252F38;
 
 html, body, h1, h2, h3, h4, p, div, section,
 nav, input, textarea, ul, li, a, button, img,
@@ -404,4 +406,78 @@ footer {
 
 .form-group {
   padding: 20px;
+}
+
+/* Landing Page */
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600,300");#landing-page {
+  background: $lightBlue;
+  height:90%;
+  text-align: center;
+  h1 {
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 48px;
+  }
+  #alerts .alert.error {
+    border: 0;
+    border-radius: 50px;
+    color: white;
+    margin: 30px auto;
+    text-align: center;
+    width: 40%;
+    padding: 10px;
+    background: $darkBlue;
+  }
+}
+
+#landing-page-inner {
+  width: 100%;
+  margin: 50px auto;
+  input[type=text], input[type=password] {
+    text-align: center;
+    border: 3px solid #8FDAED;
+    border-radius: 50px;
+    box-shadow: none;
+    font-size: 1.7em;
+    margin: 5px 20px 35px 10px;
+    padding: 15px 32px;
+  }
+  input[type=submit], a {
+    background: none repeat scroll 0 0 $lightBlue;
+    border: 3px solid #8FDAED;
+    border-radius: 50px;
+    box-shadow: none;
+    color: #FFFFFF;
+    font-size: 1.7em;
+    margin: 5px 20px 35px 10px;
+    padding: 15px 32px;
+    text-shadow: none;
+    &:hover {
+      background: none repeat scroll 0 0 $darkBlue;
+      cursor: pointer;
+    }
+  }
+  .slogan {
+    display: block;
+    color: #FFFFFF;
+    font-size: 3.5em;
+    font-style: italic;
+    font-weight: 200;
+    line-height: 1.22em;
+    margin: 50px 0 20px 10px;
+  }
+}
+
+footer#landing-footer {
+  position: fixed;
+  bottom: 0;
+  height: 5%;
+  width: 100%;
+  background-color: $darkBlue;
+  .hire-me {
+    padding-right: 10%;
+  }
+  .copyright {
+    padding-left: 5%;
+  }
 }
