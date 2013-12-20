@@ -7,6 +7,9 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+	gem 'backbone-on-rails'
+	gem 'jquery-rails'
+	gem 'chosen-rails'
 end
 
 group :development do
@@ -19,8 +22,6 @@ end
 
 gem 'twilio-ruby'
 
-gem 'backbone-on-rails'
-
 gem "paperclip"
 gem "fog"
 
@@ -28,8 +29,6 @@ gem "figaro"
 gem 'friendly_id'
 
 gem 'sidekiq'
-gem 'sinatra', require: false
-gem 'slim'
 gem 'apartment-sidekiq'
 gem 'delayed_paperclip'
 
@@ -37,13 +36,10 @@ gem 'apartment'
 
 gem 'kaminari'
 
-gem 'jquery-rails'
-gem 'chosen-rails'
-
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'unicorn'
 
-gem 'mechanize'
+gem 'mechanize', require: false
 
 gem 'stripe'
