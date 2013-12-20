@@ -3,11 +3,9 @@
   <th>Email</th>
   <th>Street</th>
   <th>City</th>
-  <th>State</th>
-  <th>Postal/Zip Code</th>
+  <th>State</th
   <th>Country</th>
   <th>Phone Number</th>
-  <th>Notes</th>
   <th></th>
   <th></th>
 </tr>
@@ -18,10 +16,8 @@
     <td><%= customer.escape('address_street') %></td>
     <td><%= customer.escape('address_city') %></td>
     <td><%= customer.escape('address_state') %></td>
-    <td><%= customer.escape('address_postal_code') %></td>
     <td><%= customer.escape('address_country') %></td>
     <td><%= NumberHelpers.number_to_phone(customer.escape('phone_number')) %></td>
-    <td><%= customer.escape('notes') %></td>
     <td class="button-group">
       <a class="btn" id="edit" href="#customers/<%= customer.id %>/edit">Edit</a>
   	</td>
