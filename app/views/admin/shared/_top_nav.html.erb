@@ -4,7 +4,7 @@
     <li class="has-dropdown">
       <%= (Profile.first.first_name ? Profile.first.full_name : current_admin.name).capitalize %>
       <ul class="nav-dropdown">
-        <li><%= link_to "<li>Log out</li>".html_safe, session_url(current_store, subdomain: false), method: :delete %>
+        <%= link_to "<li>Log out</li>".html_safe, session_url(current_store, subdomain: false), method: :delete %>
       </ul>
     </li>
   </ul>
