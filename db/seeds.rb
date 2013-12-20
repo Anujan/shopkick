@@ -11,7 +11,7 @@ URLS = {
   "SmartTV" => "http://www.bestbuy.com/site/televisions/smart-tvs/pcmcat220700050011.c?id=pcmcat220700050011"
 }
 
-results = {}
+products = []
 
 agent = Mechanize.new
 
@@ -41,11 +41,41 @@ URLS.map do |category, url|
     item[:images_attributes] << { :photo => URI.parse(image.attr('src').value) }
     item[:sku] = inner_page.search('#sku-value').text unless inner_page.search("#sku-value").empty?
     item[:category_id] = cat.id
-    Product.create!(item) unless item.values.any?(&:blank?)
+    products << Product.create!(item) unless item.values.any?(&:blank?)
   end
 end
 
 Customer.create(first_name: 'Anujan', last_name: 'Panchadcharam',
-  street_address: '770 Broadway', street_city: 'New York', street_state: 'New York',
-  street_country: 'USA', street_postal_code: '10003', email_address: 'Anujan714@gmail.com',
+  address_street: '770 Broadway', address_city: 'New York', address_state: 'New York',
+  address_country: 'USA', address_postal_code: '10003', email_address: 'Anujan714@gmail.com',
   phone_number: "+19173328921")
+
+dates = [(Date.today - 10)..Date.today]
+
+r = Random.new
+
+30.times do |i|
+  attrs = {
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    address_street: Faker::Address.street_address,
+    address_city: Faker::Address.city,
+    address_state: Faker::Address.state,
+    address_country: Faker::Address.country,
+    address_postal_code: Faker::Address.postcode,
+    phone_number: Faker::PhoneNumber.cellphone
+  }
+  attrs[:email_address] = Faker::Internet.email("#{attrs[:first_name]} #{attrs[:last_name]}")
+
+  cust = Customer.create!(attrs)
+
+  order = Order.new
+  order.customer = cust
+  order_products = products.sample(r.rand(2..5))
+  order.product_ids = order_products.map(&:id)
+  order.price = order_products.map(&:price).inject(&:+)
+  order.fulfillment_status = Order::FULFILLMENT_STATUSES.sample
+  order.payment_status = Order::PAYMENT_STATUSES.sample
+  order.save
+end
+puts 'Done seeding!'
