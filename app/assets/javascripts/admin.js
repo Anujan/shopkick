@@ -1,0 +1,11 @@
+//= require underscore
+//= require backbone
+//= require jquery.serializeJSON
+//= require GoogleChart
+//= require ./admin/router_mixin
+//= require ./admin/shopkick
+//= require_tree ../templates
+//= require_tree ./admin/models
+//= require_tree ./admin/collections
+//= require_tree ./admin/views
+//= require_tree ./admin/routers
