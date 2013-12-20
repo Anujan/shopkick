@@ -49,7 +49,7 @@ Customer.create(first_name: 'Anujan', last_name: 'Panchadcharam',
   address_country: 'USA', address_postal_code: '10003', email_address: 'Anujan714@gmail.com',
   phone_number: "+19173328921")
 
-dates = [(Date.today - 10)..Date.today]
+dates = [10.days.ago..Date.today]
 
 r = Random.new
 
