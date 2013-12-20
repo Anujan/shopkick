@@ -10,7 +10,7 @@ _.extend(Backbone.Router.prototype, {
       this._currentView.listenTo(this.collection(), "sync", this._currentView.render);
       Shopkick.$rootEl.html(newView.render().$el);
     }
-    if (this.fetched === false && !this.collection().length) {
+    var fetchCollection = function() {
       var self = this;
       this.collection().fetch({
         success: function () {
@@ -18,11 +18,13 @@ _.extend(Backbone.Router.prototype, {
           self.fetched = true;
         }
       });
-    } else if (this.nextUpdate && Date.now() > this.nextUpdate) {
-      this.collection().fetch();
+    }
+    if ((this.fetched === false && !this.collection().length) ||
+    (this.nextUpdate && Date.now() > this.nextUpdate)) {
+      fetchCollection.call(this);
     }
     swap.call(this);
-  },
+  }
 });
 
 _.extend(Backbone.Collection.prototype, {
