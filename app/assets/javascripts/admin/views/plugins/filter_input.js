@@ -50,7 +50,7 @@ Shopkick.Views.FilterInput = Backbone.View.extend({
       return model.get(searchAttr);
     });
     return _(attrs).any(function(attribute) {
-      return attribute.match(pattern);
+      return attribute.toString().match(pattern);
     });
   }
 });

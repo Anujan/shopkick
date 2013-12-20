@@ -23,9 +23,6 @@ Shopkick.Routers.Products = Backbone.Router.extend({
 	},
 
 	create: function () {
-    if (!Shopkick.categoriesCollection.length) {
-      Shopkick.categoriesCollection.fetch();
-    }
     this._swapView(new Shopkick.Views.ProductsNew());
 	},
 

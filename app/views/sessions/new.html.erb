@@ -5,16 +5,28 @@
 	<%= render partial: 'shared/flash_messages' %>
 	<div id="landing-page-inner">
 		<form id="login-form" action="<%= sign_in_url %>" method="POST">
-		  <input type="text" name="store[email]" value="" id="email" placeholder="Email">	
+		  <input type="text" name="store[email]" value="" id="email" placeholder="Email">
 		  <input type="password" name="store[password]" value="" id="password" placeholder="Password">
 		  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-		  <input type="submit" value="Login!">
+		  <input type="submit" value="Log in!">
 		</form>
 		<%= link_to "View Demo", "#", class: "btn demo-btn" %>
-		<%= link_to "Sign up!", "#", class: "btn sign-up-btn" %>
+		<%= link_to "Sign up!", "#", class: "btn sign-up-btn show-modal" %>
 		<span class="slogan">Start your online store today!</span>
 	</div>
 </div>
+<section id="modal">
+  <article>
+    <span class="hide-modal">&times;</span>
+		<form id="login-form" action="<%= sign_up_url %>" method="POST">
+      <input type="text" name="store[name]" value="" id="name" placeholder="Store Name">
+		  <input type="text" name="store[email]" value="" id="email" placeholder="Email">
+		  <input type="password" name="store[password]" value="" id="password" placeholder="Password">
+		  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		  <input type="submit" value="Sign up!">
+		</form>
+  </article>
+</section>
 <footer id="landing-footer" class="group">
 	<a class="copyright left" href="#">&copy; 2013 - 2014 Shopkick.co </a>
 	<a class="hire-me right" href="#">Hire me!</a>

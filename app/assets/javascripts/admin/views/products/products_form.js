@@ -1,4 +1,8 @@
 Shopkick.Views.ProductsForm = Backbone.View.extend({
+  initialize: function() {
+    this.listenTo(Shopkick.categoriesCollection, "sync", this.render);
+  },
+
   validation_errors: [],
 
   events: {
@@ -14,10 +18,21 @@ Shopkick.Views.ProductsForm = Backbone.View.extend({
   },
 
   render: function() {
+    if (!Shopkick.categoriesCollection.length) {
+      Shopkick.categoriesCollection.fetch();
+    }
+
     this.$el.html(this.template({
       product: this.model,
       errors: this.validation_errors
     }));
+
+    this.$('select').chosen({
+      allow_single_deselect: true,
+      no_results_text: 'No results matched',
+      width: '286px'
+    });
+
     return this;
   },
 

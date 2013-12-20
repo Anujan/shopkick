@@ -14,3 +14,27 @@
 //= require jquery_ujs
 //= require chosen-jquery
 //= require number_to_currency
+
+$(function() {
+  $('.demo-btn').on('click', function() {
+    $("#email").val("tv@shopkick.co");
+    $("#password").val("demo123");
+    $("#login-form").submit();
+  });
+  $(".show-modal").on("click", function(event){
+    event.preventDefault();
+    $("#modal").addClass("is-active");
+  });
+
+  $(".hide-modal").on("click", function(event){
+    event.preventDefault();
+    $("#modal").removeClass("is-active");
+  });
+
+  $("#modal").on("click", function(event){
+    if(event.target.id == this.id){
+      event.preventDefault();
+      $("#modal").removeClass("is-active");
+    }
+  });
+});

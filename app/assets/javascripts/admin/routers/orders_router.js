@@ -26,20 +26,7 @@ Shopkick.Routers.Orders = Backbone.Router.extend({
 
 	create: function () {
     var self = this;
-    if (Shopkick.customersCollection.length && Shopkick.productsCollection.length) {
-      this._swapView(new Shopkick.Views.OrdersNew());
-    } else {
-      if (!Shopkick.customersCollection.fetched) {
-        Shopkick.customersCollection.fetch({ success: function() {
-          self._swapView(new Shopkick.Views.OrdersNew());
-        }});
-      }
-      if (!Shopkick.productsCollection.fetched) {
-        Shopkick.productsCollection.fetch({ success: function() {
-          self._swapView(new Shopkick.Views.OrdersNew());
-        }});
-      }
-    }
+    this._swapView(new Shopkick.Views.OrdersNew());
 	},
 
   show: function (id) {

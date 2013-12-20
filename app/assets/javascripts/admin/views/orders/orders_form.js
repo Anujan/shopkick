@@ -1,7 +1,7 @@
 Shopkick.Views.OrdersForm = Backbone.View.extend({
   initialize: function() {
-    this.listenTo(Shopkick.productsCollection, "add", this.render);
-    this.listenTo(Shopkick.customersCollection, "add", this.render);
+    this.listenTo(Shopkick.productsCollection, "sync", this.render);
+    this.listenTo(Shopkick.customersCollection, "sync", this.render);
   },
 
   validation_errors: [],
@@ -15,6 +15,14 @@ Shopkick.Views.OrdersForm = Backbone.View.extend({
   tagName: 'form',
 
   render: function() {
+    if (!Shopkick.customersCollection.length) {
+      Shopkick.customersCollection.fetch();
+    }
+
+    if (!Shopkick.productsCollection.length) {
+      Shopkick.productsCollection.fetch();
+    }
+
     this.$el.html(this.template({
       order: this.model,
       errors: this.validation_errors
@@ -23,7 +31,7 @@ Shopkick.Views.OrdersForm = Backbone.View.extend({
     this.$('select').chosen({
       allow_single_deselect: true,
       no_results_text: 'No results matched',
-      width: '200px'
+      width: '286px'
     });
 
     return this;
