@@ -62,7 +62,7 @@ r = Random.new
     address_state: Faker::Address.state,
     address_country: Faker::Address.country,
     address_postal_code: Faker::Address.postcode,
-    phone_number: Faker::PhoneNumber.cellphone
+    phone_number: Faker::PhoneNumber.cell_phone
   }
   attrs[:email_address] = Faker::Internet.email("#{attrs[:first_name]} #{attrs[:last_name]}")
 
