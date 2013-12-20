@@ -28,7 +28,7 @@ class OrderWorker
       )
     end
 
-    OrderMailer.delay.payment_recieved(store_email, order)
-    OrderMailer.delay.order_confirmation(order)
+    OrderMailer.payment_recieved(store_email, order).deliver
+    OrderMailer.order_confirmation(order).deliver
   end
 end
