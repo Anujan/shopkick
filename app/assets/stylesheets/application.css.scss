@@ -141,13 +141,14 @@ nav.admin {
     color: white;
     display: block;
     text-align: center;
+    line-height: 60px;
     &:hover {
       color: $hoverBlue;
     }
   }
   li > a {
     display: block;
-    padding: 7px 5px 6px 20px;
+    line-height: 60px;
     color: inherit;
     text-align: center;
     &:hover {
