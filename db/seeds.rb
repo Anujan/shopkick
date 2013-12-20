@@ -60,7 +60,7 @@ r = Random.new
     address_street: Faker::Address.street_address,
     address_city: Faker::Address.city,
     address_state: Faker::Address.state,
-    address_country: Faker::Address.country,
+    address_country: 'USA',
     address_postal_code: Faker::Address.postcode,
     phone_number: Faker::PhoneNumber.cell_phone
   }

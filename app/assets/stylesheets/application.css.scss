@@ -249,6 +249,23 @@ nav .is-dropdown {
   }
 }
 
+#index-header {
+  width: 900px;
+  h1 {
+    display: inline-block;
+    margin-right: 100px;
+    float: left;
+    line-height: 60px;
+  }
+  a {
+    display: inline-block;
+    margin-bottom: 10px;
+    float: right;
+  }
+  margin-bottom: 4px;
+  border-bottom: 1px solid #ccc;
+}
+
 .store-content {
   margin: 0 50px;
 }
