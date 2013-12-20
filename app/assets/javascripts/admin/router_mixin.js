@@ -7,6 +7,7 @@ _.extend(Backbone.Router.prototype, {
       if (options.modelId) {
         this._currentView.model = this.collection().get(options.modelId);
       }
+      this._currentView.listenTo(this.collection(), "sync", this._currentView.render);
       Shopkick.$rootEl.html(newView.render().$el);
     }
     if (this.fetched === false && !this.collection().length) {
@@ -15,15 +16,12 @@ _.extend(Backbone.Router.prototype, {
         success: function () {
           self.nextUpdate = Date.now() + 120000; //2 minutes
           self.fetched = true;
-          swap.call(self);
         }
       });
     } else if (this.nextUpdate && Date.now() > this.nextUpdate) {
       this.collection().fetch();
-      swap.call(this);
-    } else {
-      swap.call(this);
     }
+    swap.call(this);
   },
 });
 
