@@ -9,7 +9,7 @@ _.extend(Backbone.Router.prototype, {
       }
       Shopkick.$rootEl.html(newView.render().$el);
     }
-    if (this.fetched === false) {
+    if (this.fetched === false && !this.collection().length) {
       var self = this;
       this.collection().fetch({
         success: function () {
