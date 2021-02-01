@@ -31,8 +31,9 @@ class Store < ActiveRecord::Base
 
   protected
     def setup_tenant!
-      Apartment::Database.create(self.name)
-      Apartment::Database.switch(self.name)
-      Profile.create!
+      Apartment::Tenant.create(self.name)
+      Apartment::Tenant.switch(self.name) do
+        Profile.create!
+      end
     end
 end

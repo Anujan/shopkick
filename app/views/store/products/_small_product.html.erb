@@ -6,7 +6,7 @@
   <span class="price">
   	<%= number_to_currency product.price %>
   	<span class="old-price">
-      <%= number_to_currency(product.old_price) unless product.old_price.blank? %>
+      <%= number_to_currency(product.old_price) unless product.old_price.blank? || product.old_price == product.price %>
     </span>
   </span>
 </article>

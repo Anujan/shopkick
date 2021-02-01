@@ -1,7 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-
+require 'apartment/elevators/subdomain'
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
@@ -11,7 +11,7 @@ end
 
 module Shopkick
   class Application < Rails::Application
-    # config.middleware.use 'Apartment::Elevators::Subdomain'
+    config.middleware.use Apartment::Elevators::Subdomain
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -65,12 +65,11 @@ module Shopkick
         storage: :fog,
         fog_credentials: {
           provider: "AWS",
+          region: "us-east-2",
           aws_access_key_id: ENV['S3_ACCESS_KEY'],
-          aws_secret_access_key: ENV['S3_SECRET_KEY'],
-          endpoint: 'https://rest.s3for.me'
+          aws_secret_access_key: ENV['S3_SECRET_KEY']
         },
-        fog_directory: ENV['S3_BUCKET'],
-        fog_host: "http://rest.s3for.me/#{ENV['S3_BUCKET']}"
+        fog_directory: "shopkick"
     }
 
     config.generators.test_framework = false

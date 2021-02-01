@@ -1,3 +1,4 @@
 :queues:
+  - [default, 5]
   - [paperclip, 7]
   - [order, 5]

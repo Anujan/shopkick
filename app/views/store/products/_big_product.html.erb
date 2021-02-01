@@ -8,7 +8,7 @@
     <h4 class="product-price">
       <%= number_to_currency product.price %>
       <span class="old-price">
-        <%= number_to_currency(product.old_price) unless product.old_price.blank? %>
+        <%= number_to_currency(product.old_price) unless product.old_price.blank? || product.old_price == product.price %>
       </span>
     </h4>
     <div class="button-group product-buy">

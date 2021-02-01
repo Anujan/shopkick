@@ -9,9 +9,7 @@ module StoresHelper
   	if !current_store && !request.subdomain.blank?
       flash[:error] = "The store you're looking for doesn't seem to exist"
   		redirect_to root_url(subdomain: false)
-  	elsif current_store
-  		Apartment::Database.switch(current_store.name)
-  	end
+    end
   end
 
   def load_cart(c=Cart)
